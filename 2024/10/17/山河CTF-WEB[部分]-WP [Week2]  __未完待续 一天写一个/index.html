@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="没时间而且太菜了，week2差了两道题没写qwq [Week2]自助查询 [Week2]登录验证 考点 &#96;JWT(JSON Web Token)&#96;  思路: 爆破私钥 &#x2F; none攻击 &lt;font style&#x3D;&quot;color:rgb(51, 51, 51);&quot;&gt;JWT&lt;&#x2F;font&gt;由三部分组成，分别是&lt;font style&#x3D;&amp;quot">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SHCTF-WEB-WP-[Week2]-[部分]">
+<meta property="og:url" content="http://example.com/2024/10/17/%E5%B1%B1%E6%B2%B3CTF-WEB[%E9%83%A8%E5%88%86]-WP%20[Week2]%20%20__%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD%20%E4%B8%80%E5%A4%A9%E5%86%99%E4%B8%80%E4%B8%AA/index.html">
+<meta property="og:site_name" content="Plazx">
+<meta property="og:description" content="没时间而且太菜了，week2差了两道题没写qwq [Week2]自助查询 [Week2]登录验证 考点 &#96;JWT(JSON Web Token)&#96;  思路: 爆破私钥 &#x2F; none攻击 &lt;font style&#x3D;&quot;color:rgb(51, 51, 51);&quot;&gt;JWT&lt;&#x2F;font&gt;由三部分组成，分别是&lt;font style&#x3D;&amp;quot">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2024/png/40918973/1729135331009-6818f88d-811d-4306-bca4-a38da6232308.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2024/png/40918973/1729138383982-7f8194be-57ee-43b8-8fb2-28fa5bccdc67.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2024/png/40918973/1729164450159-a986b875-f6c2-45dd-be49-c479a505cb57.png">
+<meta property="article:published_time" content="2024-10-16T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-10-17T12:06:55.402Z">
+<meta property="article:author" content="Plazx">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.nlark.com/yuque/0/2024/png/40918973/1729135331009-6818f88d-811d-4306-bca4-a38da6232308.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>SHCTF-WEB-WP-[Week2]-[部分]</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/NekoSec">Projects</a></li><!--
+     --><!--
+       --><li><a href="/links/">Friend Links</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/2024/10/13/%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E7%9A%84%E4%B8%80%E4%BA%9B%E5%9D%91%E7%82%B9-%E9%95%BF%E6%9C%9F%E6%9B%B4%E6%96%B0/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2024/10/17/%E5%B1%B1%E6%B2%B3CTF-WEB[%E9%83%A8%E5%88%86]-WP%20[Week2]%20%20__%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD%20%E4%B8%80%E5%A4%A9%E5%86%99%E4%B8%80%E4%B8%AA/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2024/10/17/%E5%B1%B1%E6%B2%B3CTF-WEB[%E9%83%A8%E5%88%86]-WP%20[Week2]%20%20__%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD%20%E4%B8%80%E5%A4%A9%E5%86%99%E4%B8%80%E4%B8%AA/&text=SHCTF-WEB-WP-[Week2]-[部分]"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2024/10/17/%E5%B1%B1%E6%B2%B3CTF-WEB[%E9%83%A8%E5%88%86]-WP%20[Week2]%20%20__%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD%20%E4%B8%80%E5%A4%A9%E5%86%99%E4%B8%80%E4%B8%AA/&title=SHCTF-WEB-WP-[Week2]-[部分]"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2024/10/17/%E5%B1%B1%E6%B2%B3CTF-WEB[%E9%83%A8%E5%88%86]-WP%20[Week2]%20%20__%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD%20%E4%B8%80%E5%A4%A9%E5%86%99%E4%B8%80%E4%B8%AA/&is_video=false&description=SHCTF-WEB-WP-[Week2]-[部分]"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=SHCTF-WEB-WP-[Week2]-[部分]&body=Check out this article: http://example.com/2024/10/17/%E5%B1%B1%E6%B2%B3CTF-WEB[%E9%83%A8%E5%88%86]-WP%20[Week2]%20%20__%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD%20%E4%B8%80%E5%A4%A9%E5%86%99%E4%B8%80%E4%B8%AA/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2024/10/17/%E5%B1%B1%E6%B2%B3CTF-WEB[%E9%83%A8%E5%88%86]-WP%20[Week2]%20%20__%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD%20%E4%B8%80%E5%A4%A9%E5%86%99%E4%B8%80%E4%B8%AA/&title=SHCTF-WEB-WP-[Week2]-[部分]"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2024/10/17/%E5%B1%B1%E6%B2%B3CTF-WEB[%E9%83%A8%E5%88%86]-WP%20[Week2]%20%20__%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD%20%E4%B8%80%E5%A4%A9%E5%86%99%E4%B8%80%E4%B8%AA/&title=SHCTF-WEB-WP-[Week2]-[部分]"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2024/10/17/%E5%B1%B1%E6%B2%B3CTF-WEB[%E9%83%A8%E5%88%86]-WP%20[Week2]%20%20__%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD%20%E4%B8%80%E5%A4%A9%E5%86%99%E4%B8%80%E4%B8%AA/&title=SHCTF-WEB-WP-[Week2]-[部分]"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2024/10/17/%E5%B1%B1%E6%B2%B3CTF-WEB[%E9%83%A8%E5%88%86]-WP%20[Week2]%20%20__%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD%20%E4%B8%80%E5%A4%A9%E5%86%99%E4%B8%80%E4%B8%AA/&title=SHCTF-WEB-WP-[Week2]-[部分]"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2024/10/17/%E5%B1%B1%E6%B2%B3CTF-WEB[%E9%83%A8%E5%88%86]-WP%20[Week2]%20%20__%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD%20%E4%B8%80%E5%A4%A9%E5%86%99%E4%B8%80%E4%B8%AA/&name=SHCTF-WEB-WP-[Week2]-[部分]&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2024/10/17/%E5%B1%B1%E6%B2%B3CTF-WEB[%E9%83%A8%E5%88%86]-WP%20[Week2]%20%20__%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD%20%E4%B8%80%E5%A4%A9%E5%86%99%E4%B8%80%E4%B8%AA/&t=SHCTF-WEB-WP-[Week2]-[部分]"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#tio6E"><span class="toc-number">1.</span> <span class="toc-text">[Week2]自助查询</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ed9Z9"><span class="toc-number">2.</span> <span class="toc-text">[Week2]登录验证</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#LoHp5"><span class="toc-number">3.</span> <span class="toc-text">[Week2]guess_the_number</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Ws6bB"><span class="toc-number">4.</span> <span class="toc-text">[Week2]入侵者禁入</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#erVgX"><span class="toc-number">5.</span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#NF26v"><span class="toc-number">6.</span> <span class="toc-text">攻击面收敛</span></a></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        SHCTF-WEB-WP-[Week2]-[部分]
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">Plazx</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2024-10-16T16:00:00.000Z" class="dt-published" itemprop="datePublished">2024-10-17</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <meta name="referrer" content="no-referrer" />
+
+
+<p><strong>没时间而且太菜了，week2差了两道题没写qwq</strong></p>
+<h1 id="tio6E">[Week2]自助查询</h1>
+<h1 id="ed9Z9">[Week2]登录验证</h1>
+考点 `<font style="color:rgb(51, 51, 51);">JWT(JSON Web Token)</font>`
+
+<p><font style="color:rgb(51, 51, 51);">思路: 爆破私钥 &#x2F; none攻击</font></p>
+<p><code>&lt;font style=&quot;color:rgb(51, 51, 51);&quot;&gt;JWT&lt;/font&gt;</code><font style="color:rgb(51, 51, 51);">由三部分组成，分别是</font><code>&lt;font style=&quot;color:rgb(51, 51, 51);&quot;&gt;Header&lt;/font&gt;</code><font style="color:rgb(51, 51, 51);">、</font><code>&lt;font style=&quot;color:rgb(51, 51, 51);&quot;&gt;Payload&lt;/font&gt;</code><font style="color:rgb(51, 51, 51);">和</font><code>&lt;font style=&quot;color:rgb(51, 51, 51);&quot;&gt;Signature&lt;/font&gt;</code></p>
+<p><font style="color:rgb(51, 51, 51);">该三部分均为</font><code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.75);&quot;&gt;Base64Url&lt;/font&gt;</code><font style="color:rgba(0, 0, 0, 0.75);">编码</font></p>
+<p>拓展，<code>JWT</code>不是<code>base64</code>编码，而是<code>BASE64URL</code>编码</p>
+<p><code>BASE64URL</code>编码的流程：先<code>base</code>编码，再去除尾部&#x3D;，把”+”替换成”-“ ，把”&#x2F;“替换成”_”</p>
+<p>随手一输<code>admin/admin</code> 提示 <font style="color:rgb(0, 0, 0);">你不是真正的admin 看数据包发现</font></p>
+<p><code>token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MjkxNDA4MjIsImlhdCI6MTcyOTEzMzYyMiwibmJmIjoxNzI5MTMzNjIyLCJyb2xlIjoidXNlciJ9.gR1jjFXhYj2uah0JKPogKlq5nK_AJbeadaVx9OhAVg0</code></p>
+<p>疑似<code>JWT</code>拿到<code>jwt.io</code>解一下<br> <img src="https://cdn.nlark.com/yuque/0/2024/png/40918973/1729135331009-6818f88d-811d-4306-bca4-a38da6232308.png"></p>
+<p>很好，是HS256对称加密（RS256 ES256 都是非对称加密）一旦我们拿到密钥，就可以伪造签名了</p>
+<p>下面进行密钥爆破</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2024/png/40918973/1729138383982-7f8194be-57ee-43b8-8fb2-28fa5bccdc67.png"></p>
+<p>成功得到key 下面进行伪造</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2024/png/40918973/1729164450159-a986b875-f6c2-45dd-be49-c479a505cb57.png"></p>
+<p>即可</p>
+<h1 id="LoHp5">[Week2]guess_the_number</h1>
+F12查看到`/s0urce`路由，下载源码`app.py`
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">import flask</span><br><span class="line">import random</span><br><span class="line">from flask import Flask, request, render_template, send_file</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line">@app.route(<span class="string">&#x27;/&#x27;</span>)</span><br><span class="line">def index():</span><br><span class="line">    <span class="keyword">return</span> render_template(<span class="string">&#x27;index.html&#x27;</span>, first_num = first_num)  </span><br><span class="line"></span><br><span class="line">@app.route(<span class="string">&#x27;/s0urce&#x27;</span>)</span><br><span class="line">def get_source():</span><br><span class="line">    file_path = <span class="string">&quot;app.py&quot;</span></span><br><span class="line">    <span class="keyword">return</span> send_file(file_path, as_attachment=True)</span><br><span class="line">    </span><br><span class="line">@app.route(<span class="string">&#x27;/first&#x27;</span>)</span><br><span class="line">def get_first_number():</span><br><span class="line">    <span class="keyword">return</span> str(first_num)</span><br><span class="line">    </span><br><span class="line">@app.route(<span class="string">&#x27;/guess&#x27;</span>)</span><br><span class="line">def verify_seed():</span><br><span class="line">    num = request.args.get(<span class="string">&#x27;num&#x27;</span>)</span><br><span class="line">    <span class="keyword">if</span> num == str(second_num):</span><br><span class="line">        with open(<span class="string">&quot;/flag&quot;</span>, <span class="string">&quot;r&quot;</span>) as file:</span><br><span class="line">            <span class="keyword">return</span> file.read()</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;nonono&quot;</span></span><br><span class="line"> </span><br><span class="line">def init():</span><br><span class="line">    global seed, first_num, second_num</span><br><span class="line">    seed = random.randint(<span class="number">1000000</span>,<span class="number">9999999</span>)</span><br><span class="line">    random.seed(seed)</span><br><span class="line">    first_num = random.randint(<span class="number">1000000000</span>,<span class="number">9999999999</span>)</span><br><span class="line">    second_num = random.randint(<span class="number">1000000000</span>,<span class="number">9999999999</span>)</span><br><span class="line"></span><br><span class="line">init()</span><br><span class="line">app.run(debug=True)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>发现是一个猜数字的问题，必须让第一个数等于第二个数，涉及伪随机数问题，由于没学过于是开始疯狂学习</p>
+<p><code>&lt;font style=&quot;color:rgb(31, 35, 40);&quot;&gt;random&lt;/font&gt;</code><font style="color:rgb(31, 35, 40);">是python的一个随机数库，可用于生成伪随机数</font></p>
+<p><code>&lt;font style=&quot;color:rgb(31, 35, 40);&quot;&gt;random.random()&lt;/font&gt;</code><font style="color:rgb(31, 35, 40);">随机生成一个0到1之前的浮点数</font></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import random</span><br><span class="line"><span class="title function_">print</span><span class="params">(random.random())</span></span><br></pre></td></tr></table></figure>
+
+<p><code>&lt;font style=&quot;color:rgb(31, 35, 40);&quot;&gt;random.randint(1,100)&lt;/font&gt;</code><font style="color:rgb(31, 35, 40);"> </font><font style="color:rgb(31, 35, 40);">随机生成一个1到100之间的整数</font></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import random</span><br><span class="line"><span class="title function_">print</span><span class="params">(random.randint(<span class="number">1</span>,<span class="number">100</span>))</span></span><br></pre></td></tr></table></figure>
+
+<p>设置随机数种子<code>random.seed(10)</code></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import random</span><br><span class="line">random.seed(<span class="number">1</span>)</span><br><span class="line">print(random.randint(<span class="number">1</span>,<span class="number">100</span>))</span><br><span class="line">print(random.randint(<span class="number">1</span>,<span class="number">100</span>))</span><br><span class="line">print(random.randint(<span class="number">1</span>,<span class="number">100</span>))</span><br><span class="line">print(random.randint(<span class="number">1</span>,<span class="number">100</span>))</span><br><span class="line">print(random.randint(<span class="number">1</span>,<span class="number">100</span>))</span><br></pre></td></tr></table></figure>
+
+<p>一旦随机数种子被确认，那么输出的随机数 <strong>生成序列</strong> 也就确认了，我们可以根据随机数种子，推出生成的随机数是什么</p>
+<blockquote>
+<p>在伪随机数生成器（PRNG）中，一个种子并不只生成一个随机数。相反，它生成的是一个<strong>伪随机数序列</strong>。每次调用 <code>random.randint()</code> 或其他类似方法时，伪随机数生成器会根据当前的内部状态生成下一个随机数。因此，给定相同的种子，可以生成一系列相同的随机数 </p>
+</blockquote>
+<p>问题是，尽管不同的种子输出的生成序列不同，但是不同的种子可能输出的第一个值相同，但是这种可能性比较小</p>
+<p>综上，现在我们已知种子的范围，只需要写一个程序爆破即可</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">import random</span><br><span class="line"></span><br><span class="line"># 已知的 first_num</span><br><span class="line">known_first_num = <span class="number">6296819177</span></span><br><span class="line"></span><br><span class="line"># 定义种子的范围</span><br><span class="line">seed_min = <span class="number">1000000</span></span><br><span class="line">seed_max = <span class="number">9999999</span></span><br><span class="line"></span><br><span class="line">def find_seed(known_first_num, seed_min, seed_max):</span><br><span class="line">    <span class="keyword">for</span> seed in range(seed_min, seed_max + <span class="number">1</span>):</span><br><span class="line">        # 用当前种子设置随机数生成器</span><br><span class="line">        random.seed(seed)</span><br><span class="line">        </span><br><span class="line">        # 生成一个随机数</span><br><span class="line">        first_num = random.randint(<span class="number">1000000000</span>, <span class="number">9999999999</span>)</span><br><span class="line">        </span><br><span class="line">        # 检查生成的随机数是否与已知的相同</span><br><span class="line">        <span class="keyword">if</span> first_num == known_first_num:</span><br><span class="line">            print(f<span class="string">&quot;找到了种子: &#123;seed&#125;&quot;</span>)</span><br><span class="line">            <span class="keyword">return</span> seed</span><br><span class="line"></span><br><span class="line">    print(<span class="string">&quot;未找到匹配的种子&quot;</span>)</span><br><span class="line">    <span class="keyword">return</span> None</span><br><span class="line"></span><br><span class="line"># 调用函数查找种子</span><br><span class="line">found_seed = find_seed(known_first_num, seed_min, seed_max)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>找到了种子<code>1364726</code></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import random</span><br><span class="line">random.seed(<span class="number">1364726</span>)</span><br><span class="line">print(random.randint(<span class="number">1000000000</span>, <span class="number">9999999999</span>))</span><br><span class="line">print(random.randint(<span class="number">1000000000</span>, <span class="number">9999999999</span>))</span><br></pre></td></tr></table></figure>
+
+<p>得到结果<code>8239362449</code></p>
+<p>参考资料</p>
+<p><a target="_blank" rel="noopener" href="https://research.qianxin.com/archives/1357">https://research.qianxin.com/archives/1357</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/MisakiKata/python_code_audit/blob/master/%E4%BC%AA%E9%9A%8F%E6%9C%BA%E6%95%B0.md">https://github.com/MisakiKata/python_code_audit&#x2F;blob&#x2F;master&#x2F;%E4%BC%AA%E9%9A%8F%E6%9C%BA%E6%95%B0.md</a></p>
+<h1 id="Ws6bB">[Week2]入侵者禁入</h1>
+知识点：Python Flask Session伪造+Ssti模板注入
+
+<h1 id="erVgX">总结</h1>
+自己三方面的能力不足
+
+<ol>
+<li>知识面、技术栈太局限，应该拓展一下，了解更多的漏洞</li>
+<li>编写脚本的能力、开发能力不足，线下不出网环境就寄了</li>
+<li>完善武器库</li>
+</ol>
+<h1 id="NF26v">攻击面收敛</h1>
+JWT相关
+
+<ol>
+<li>敏感信息泄露</li>
+<li>none 无签名</li>
+<li>弱密钥</li>
+</ol>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">Home</a></li>
+        
+          <li><a href="/about/">About</a></li>
+        
+          <li><a href="/archives/">Writing</a></li>
+        
+          <li><a target="_blank" rel="noopener" href="http://github.com/NekoSec">Projects</a></li>
+        
+          <li><a href="/links/">Friend Links</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#tio6E"><span class="toc-number">1.</span> <span class="toc-text">[Week2]自助查询</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ed9Z9"><span class="toc-number">2.</span> <span class="toc-text">[Week2]登录验证</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#LoHp5"><span class="toc-number">3.</span> <span class="toc-text">[Week2]guess_the_number</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Ws6bB"><span class="toc-number">4.</span> <span class="toc-text">[Week2]入侵者禁入</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#erVgX"><span class="toc-number">5.</span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#NF26v"><span class="toc-number">6.</span> <span class="toc-text">攻击面收敛</span></a></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2024/10/17/%E5%B1%B1%E6%B2%B3CTF-WEB[%E9%83%A8%E5%88%86]-WP%20[Week2]%20%20__%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD%20%E4%B8%80%E5%A4%A9%E5%86%99%E4%B8%80%E4%B8%AA/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2024/10/17/%E5%B1%B1%E6%B2%B3CTF-WEB[%E9%83%A8%E5%88%86]-WP%20[Week2]%20%20__%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD%20%E4%B8%80%E5%A4%A9%E5%86%99%E4%B8%80%E4%B8%AA/&text=SHCTF-WEB-WP-[Week2]-[部分]"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2024/10/17/%E5%B1%B1%E6%B2%B3CTF-WEB[%E9%83%A8%E5%88%86]-WP%20[Week2]%20%20__%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD%20%E4%B8%80%E5%A4%A9%E5%86%99%E4%B8%80%E4%B8%AA/&title=SHCTF-WEB-WP-[Week2]-[部分]"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2024/10/17/%E5%B1%B1%E6%B2%B3CTF-WEB[%E9%83%A8%E5%88%86]-WP%20[Week2]%20%20__%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD%20%E4%B8%80%E5%A4%A9%E5%86%99%E4%B8%80%E4%B8%AA/&is_video=false&description=SHCTF-WEB-WP-[Week2]-[部分]"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=SHCTF-WEB-WP-[Week2]-[部分]&body=Check out this article: http://example.com/2024/10/17/%E5%B1%B1%E6%B2%B3CTF-WEB[%E9%83%A8%E5%88%86]-WP%20[Week2]%20%20__%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD%20%E4%B8%80%E5%A4%A9%E5%86%99%E4%B8%80%E4%B8%AA/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2024/10/17/%E5%B1%B1%E6%B2%B3CTF-WEB[%E9%83%A8%E5%88%86]-WP%20[Week2]%20%20__%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD%20%E4%B8%80%E5%A4%A9%E5%86%99%E4%B8%80%E4%B8%AA/&title=SHCTF-WEB-WP-[Week2]-[部分]"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2024/10/17/%E5%B1%B1%E6%B2%B3CTF-WEB[%E9%83%A8%E5%88%86]-WP%20[Week2]%20%20__%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD%20%E4%B8%80%E5%A4%A9%E5%86%99%E4%B8%80%E4%B8%AA/&title=SHCTF-WEB-WP-[Week2]-[部分]"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2024/10/17/%E5%B1%B1%E6%B2%B3CTF-WEB[%E9%83%A8%E5%88%86]-WP%20[Week2]%20%20__%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD%20%E4%B8%80%E5%A4%A9%E5%86%99%E4%B8%80%E4%B8%AA/&title=SHCTF-WEB-WP-[Week2]-[部分]"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2024/10/17/%E5%B1%B1%E6%B2%B3CTF-WEB[%E9%83%A8%E5%88%86]-WP%20[Week2]%20%20__%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD%20%E4%B8%80%E5%A4%A9%E5%86%99%E4%B8%80%E4%B8%AA/&title=SHCTF-WEB-WP-[Week2]-[部分]"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2024/10/17/%E5%B1%B1%E6%B2%B3CTF-WEB[%E9%83%A8%E5%88%86]-WP%20[Week2]%20%20__%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD%20%E4%B8%80%E5%A4%A9%E5%86%99%E4%B8%80%E4%B8%AA/&name=SHCTF-WEB-WP-[Week2]-[部分]&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2024/10/17/%E5%B1%B1%E6%B2%B3CTF-WEB[%E9%83%A8%E5%88%86]-WP%20[Week2]%20%20__%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD%20%E4%B8%80%E5%A4%A9%E5%86%99%E4%B8%80%E4%B8%AA/&t=SHCTF-WEB-WP-[Week2]-[部分]"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2024-2077
+    Plazx
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/NekoSec">Projects</a></li><!--
+     --><!--
+       --><li><a href="/links/">Friend Links</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+  <script type="text/javascript">
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?4d0e9f82e790a82153825a1c24f344dc";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+        </script>
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>
