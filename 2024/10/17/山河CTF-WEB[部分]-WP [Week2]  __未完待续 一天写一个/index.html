@@ -16,8 +16,9 @@
 <meta property="og:image" content="https://cdn.nlark.com/yuque/0/2024/png/40918973/1729135331009-6818f88d-811d-4306-bca4-a38da6232308.png">
 <meta property="og:image" content="https://cdn.nlark.com/yuque/0/2024/png/40918973/1729138383982-7f8194be-57ee-43b8-8fb2-28fa5bccdc67.png">
 <meta property="og:image" content="https://cdn.nlark.com/yuque/0/2024/png/40918973/1729164450159-a986b875-f6c2-45dd-be49-c479a505cb57.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2024/png/40918973/1729238140296-8d854e52-7e30-4f2d-9985-e4a0e9c02463.png">
 <meta property="article:published_time" content="2024-10-16T16:00:00.000Z">
-<meta property="article:modified_time" content="2024-10-17T12:46:03.023Z">
+<meta property="article:modified_time" content="2024-10-27T12:43:22.250Z">
 <meta property="article:author" content="Plazx">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://cdn.nlark.com/yuque/0/2024/png/40918973/1729135331009-6818f88d-811d-4306-bca4-a38da6232308.png">
@@ -118,7 +119,7 @@
     
     
       <div id="toc">
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#tio6E"><span class="toc-number">1.</span> <span class="toc-text">[Week2]自助查询</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ed9Z9"><span class="toc-number">2.</span> <span class="toc-text">[Week2]登录验证</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#LoHp5"><span class="toc-number">3.</span> <span class="toc-text">[Week2]guess_the_number</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Ws6bB"><span class="toc-number">4.</span> <span class="toc-text">[Week2]入侵者禁入</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#erVgX"><span class="toc-number">5.</span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#NF26v"><span class="toc-number">6.</span> <span class="toc-text">攻击面收敛</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#tio6E"><span class="toc-number">1.</span> <span class="toc-text">[Week2]自助查询</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ed9Z9"><span class="toc-number">2.</span> <span class="toc-text">[Week2]登录验证</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#LoHp5"><span class="toc-number">3.</span> <span class="toc-text">[Week2]guess_the_number</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Ws6bB"><span class="toc-number">4.</span> <span class="toc-text">[Week2]入侵者禁入</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#erVgX"><span class="toc-number">5.</span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#NF26v"><span class="toc-number">6.</span> <span class="toc-text">攻击面收敛</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#YdWZ1"><span class="toc-number">6.1.</span> <span class="toc-text">JWT相关</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PXPSM"><span class="toc-number">6.2.</span> <span class="toc-text">SQLI</span></a></li></ol></li></ol>
       </div>
     
   </span>
@@ -214,22 +215,29 @@ F12查看到`/s0urce`路由，下载源码`app.py`
 <h1 id="Ws6bB">[Week2]入侵者禁入</h1>
 知识点：Python Flask Session伪造+Ssti模板注入
 
+<p><img src="https://cdn.nlark.com/yuque/0/2024/png/40918973/1729238140296-8d854e52-7e30-4f2d-9985-e4a0e9c02463.png"></p>
+<p>现在我们获取了<code>secret_key</code>下面使用工具进行伪造</p>
+<p><code>[https://github.com/noraj/flask-session-cookie-manager](https://github.com/noraj/flask-session-cookie-manager)</code> </p>
 <h1 id="erVgX">总结</h1>
 自己三方面的能力不足
 
 <ol>
-<li>知识面、技术栈太局限，应该拓展一下，了解更多的漏洞</li>
+<li>知识面、技术栈太局限，应该拓展一下，了解更多的漏洞（ssti、sqli）</li>
 <li>编写脚本的能力、开发能力不足，线下不出网环境就寄了</li>
 <li>完善武器库</li>
 </ol>
 <h1 id="NF26v">攻击面收敛</h1>
-JWT相关
+<h2 id="YdWZ1">JWT相关</h2>
+1. 敏感信息泄露
+2. none 无签名
+3. 弱密钥
 
-<ol>
-<li>敏感信息泄露</li>
-<li>none 无签名</li>
-<li>弱密钥</li>
-</ol>
+<h2 id="PXPSM">SQLI</h2>
+1. 读文件
+2. GETSHELL  
+   
+ 
+
 
   </div>
 </article>
@@ -259,7 +267,7 @@ JWT相关
     
     
       <div id="toc-footer" style="display: none">
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#tio6E"><span class="toc-number">1.</span> <span class="toc-text">[Week2]自助查询</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ed9Z9"><span class="toc-number">2.</span> <span class="toc-text">[Week2]登录验证</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#LoHp5"><span class="toc-number">3.</span> <span class="toc-text">[Week2]guess_the_number</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Ws6bB"><span class="toc-number">4.</span> <span class="toc-text">[Week2]入侵者禁入</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#erVgX"><span class="toc-number">5.</span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#NF26v"><span class="toc-number">6.</span> <span class="toc-text">攻击面收敛</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#tio6E"><span class="toc-number">1.</span> <span class="toc-text">[Week2]自助查询</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ed9Z9"><span class="toc-number">2.</span> <span class="toc-text">[Week2]登录验证</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#LoHp5"><span class="toc-number">3.</span> <span class="toc-text">[Week2]guess_the_number</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Ws6bB"><span class="toc-number">4.</span> <span class="toc-text">[Week2]入侵者禁入</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#erVgX"><span class="toc-number">5.</span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#NF26v"><span class="toc-number">6.</span> <span class="toc-text">攻击面收敛</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#YdWZ1"><span class="toc-number">6.1.</span> <span class="toc-text">JWT相关</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PXPSM"><span class="toc-number">6.2.</span> <span class="toc-text">SQLI</span></a></li></ol></li></ol>
       </div>
     
 
