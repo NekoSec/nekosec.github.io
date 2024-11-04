@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="#Tool：Wireshark #你打出的每一个Poc在态势面前都是透明的  协议统计 ![](https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2024&#x2F;png&#x2F;40918973&#x2F;1730728584776-05a09a01-3886-4ca0-b330-085b5f0c9b49.png)  点击进入统计-协议分级  IPv6（Internet Protocol version">
+<meta property="og:type" content="article">
+<meta property="og:title" content="流量分析从0到1">
+<meta property="og:url" content="http://example.com/2024/11/04/%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90%E4%BB%8E0%E5%88%B01/index.html">
+<meta property="og:site_name" content="Plazx">
+<meta property="og:description" content="#Tool：Wireshark #你打出的每一个Poc在态势面前都是透明的  协议统计 ![](https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2024&#x2F;png&#x2F;40918973&#x2F;1730728584776-05a09a01-3886-4ca0-b330-085b5f0c9b49.png)  点击进入统计-协议分级  IPv6（Internet Protocol version">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2024/png/40918973/1730728722117-b1c5a2aa-4931-4ea4-8c38-989395c85455.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2024/png/40918973/1730730745788-73c83939-6ac8-4bdd-b11e-cd545a6fb62b.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2024/png/40918973/1730734928538-d8d0ca2a-8bfa-4f50-9025-64cd5084964d.png">
+<meta property="article:published_time" content="2024-11-03T16:15:00.000Z">
+<meta property="article:modified_time" content="2024-11-04T15:50:58.584Z">
+<meta property="article:author" content="Plazx">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.nlark.com/yuque/0/2024/png/40918973/1730728722117-b1c5a2aa-4931-4ea4-8c38-989395c85455.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>流量分析从0到1</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/NekoSec">Projects</a></li><!--
+     --><!--
+       --><li><a href="/links/">Friend Links</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/2024/10/30/ISEAL%E6%8B%9B%E6%96%B0%E8%B5%9B-WP-Plazx-Web/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2024/11/04/%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90%E4%BB%8E0%E5%88%B01/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2024/11/04/%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90%E4%BB%8E0%E5%88%B01/&text=流量分析从0到1"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2024/11/04/%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90%E4%BB%8E0%E5%88%B01/&title=流量分析从0到1"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2024/11/04/%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90%E4%BB%8E0%E5%88%B01/&is_video=false&description=流量分析从0到1"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=流量分析从0到1&body=Check out this article: http://example.com/2024/11/04/%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90%E4%BB%8E0%E5%88%B01/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2024/11/04/%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90%E4%BB%8E0%E5%88%B01/&title=流量分析从0到1"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2024/11/04/%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90%E4%BB%8E0%E5%88%B01/&title=流量分析从0到1"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2024/11/04/%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90%E4%BB%8E0%E5%88%B01/&title=流量分析从0到1"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2024/11/04/%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90%E4%BB%8E0%E5%88%B01/&title=流量分析从0到1"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2024/11/04/%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90%E4%BB%8E0%E5%88%B01/&name=流量分析从0到1&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2024/11/04/%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90%E4%BB%8E0%E5%88%B01/&t=流量分析从0到1"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#jMYye"><span class="toc-number">1.</span> <span class="toc-text">协议统计</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#bhZJQ"><span class="toc-number">2.</span> <span class="toc-text">[陇剑杯 2021]jwt（问1）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#wvkP7"><span class="toc-number">3.</span> <span class="toc-text">[陇剑杯 2021]jwt（问2）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#GPKUX"><span class="toc-number">4.</span> <span class="toc-text">[陇剑杯 2021]jwt（问3）</span></a></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        流量分析从0到1
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">Plazx</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2024-11-03T16:15:00.000Z" class="dt-published" itemprop="datePublished">2024-11-04</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <meta name="referrer" content="no-referrer" />
+
+<blockquote>
+<p>#Tool：Wireshark</p>
+<p>#你打出的每一个Poc在态势面前都是透明的</p>
+</blockquote>
+<h1 id="jMYye">协议统计</h1>
+![](https://cdn.nlark.com/yuque/0/2024/png/40918973/1730728584776-05a09a01-3886-4ca0-b330-085b5f0c9b49.png)
+
+<p>点击进入<code>统计-协议分级</code></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2024/png/40918973/1730728722117-b1c5a2aa-4931-4ea4-8c38-989395c85455.png"></p>
+<p><font style="color:rgb(6, 6, 7);">IPv6（Internet Protocol version 6）（互联网协议第六版）IPv4（Internet Protocol version 6）（互联网协议第四版）</font></p>
+<p><font style="color:rgb(6, 6, 7);">Transmission Control Protocol (TCP)  User Datagram Protocol (UDP)</font></p>
+<p><font style="color:rgb(6, 6, 7);">Hypertext Transfer Protocol (HTTP)：超文本传输协议</font></p>
+<p><font style="color:rgb(6, 6, 7);">得到Flag：</font><code>&lt;font style=&quot;color:rgb(6, 6, 7);&quot;&gt;NSSCTF&#123;http&#125;&lt;/font&gt;</code></p>
+<h1 id="bhZJQ">[陇剑杯 2021]jwt（问1）<font style="background-color:rgb(29, 30, 31);"></font></h1>
+![](https://cdn.nlark.com/yuque/0/2024/png/40918973/1730730171136-3e46c336-732d-47d1-8421-4a73526975ba.png)
+
+<p> 进入选择 <font style="color:rgb(6, 6, 7);">“Protocol”（协议），任意选择一个http数据包，右键追踪流，追踪http数据流</font></p>
+<p><font style="color:rgb(6, 6, 7);">下方过滤cookie</font></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2024/png/40918973/1730730745788-73c83939-6ac8-4bdd-b11e-cd545a6fb62b.png"></p>
+<p>明显是jwt <font style="color:rgb(6, 6, 7);">得到Flag：</font><code>&lt;font style=&quot;color:rgb(6, 6, 7);&quot;&gt;NSSCTF&#123;jwt&#125;&lt;/font&gt;</code></p>
+<p><font style="color:rgb(6, 6, 7);">注意到 </font>PHP Session并非是鉴权，是系统随机分配的<font style="color:rgb(51, 51, 51);">会话</font></p>
+<h1 id="wvkP7"><font style="color:rgb(51, 51, 51);">[陇剑杯 2021]jwt（问2）</font></h1>
+![](https://cdn.nlark.com/yuque/0/2024/png/40918973/1730731793654-431f3364-25bc-4aa3-a610-0007e4c513f5.png)
+
+<p>#搞半天发现是自己附件下错了</p>
+<p>过滤http流，找到post &#x2F;exec 发现是成功执行指令whoami</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2024/png/40918973/1730734928538-d8d0ca2a-8bfa-4f50-9025-64cd5084964d.png"></p>
+<p>jwt <font style="color:rgb(6, 6, 7);">得到Flag：</font><code>&lt;font style=&quot;color:rgb(6, 6, 7);&quot;&gt;NSSCTF&#123;10087#admin&#125;&lt;/font&gt;</code></p>
+<h1 id="GPKUX"><font style="color:rgb(51, 51, 51);">[陇剑杯 2021]jwt（问3）</font></h1>
+![](https://cdn.nlark.com/yuque/0/2024/png/40918973/1730735089838-54c46551-234b-4c93-a1ea-34f21abbe795.png)
+
+<p>从上文得出，显然<code>&lt;font style=&quot;color:rgb(6, 6, 7);&quot;&gt;NSSCTF&#123;root&#125;&lt;/font&gt;</code></p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">Home</a></li>
+        
+          <li><a href="/about/">About</a></li>
+        
+          <li><a href="/archives/">Writing</a></li>
+        
+          <li><a target="_blank" rel="noopener" href="http://github.com/NekoSec">Projects</a></li>
+        
+          <li><a href="/links/">Friend Links</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#jMYye"><span class="toc-number">1.</span> <span class="toc-text">协议统计</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#bhZJQ"><span class="toc-number">2.</span> <span class="toc-text">[陇剑杯 2021]jwt（问1）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#wvkP7"><span class="toc-number">3.</span> <span class="toc-text">[陇剑杯 2021]jwt（问2）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#GPKUX"><span class="toc-number">4.</span> <span class="toc-text">[陇剑杯 2021]jwt（问3）</span></a></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2024/11/04/%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90%E4%BB%8E0%E5%88%B01/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2024/11/04/%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90%E4%BB%8E0%E5%88%B01/&text=流量分析从0到1"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2024/11/04/%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90%E4%BB%8E0%E5%88%B01/&title=流量分析从0到1"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2024/11/04/%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90%E4%BB%8E0%E5%88%B01/&is_video=false&description=流量分析从0到1"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=流量分析从0到1&body=Check out this article: http://example.com/2024/11/04/%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90%E4%BB%8E0%E5%88%B01/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2024/11/04/%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90%E4%BB%8E0%E5%88%B01/&title=流量分析从0到1"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2024/11/04/%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90%E4%BB%8E0%E5%88%B01/&title=流量分析从0到1"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2024/11/04/%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90%E4%BB%8E0%E5%88%B01/&title=流量分析从0到1"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2024/11/04/%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90%E4%BB%8E0%E5%88%B01/&title=流量分析从0到1"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2024/11/04/%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90%E4%BB%8E0%E5%88%B01/&name=流量分析从0到1&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2024/11/04/%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90%E4%BB%8E0%E5%88%B01/&t=流量分析从0到1"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2024-2077
+    Plazx
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/NekoSec">Projects</a></li><!--
+     --><!--
+       --><li><a href="/links/">Friend Links</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+  <script type="text/javascript">
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?4d0e9f82e790a82153825a1c24f344dc";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+        </script>
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>
