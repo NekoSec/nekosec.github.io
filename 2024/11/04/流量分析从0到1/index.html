@@ -6,21 +6,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-    <meta name="description" content="#Tool：Wireshark #你打出的每一个Poc在态势面前都是透明的  协议统计 ![](https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2024&#x2F;png&#x2F;40918973&#x2F;1730728584776-05a09a01-3886-4ca0-b330-085b5f0c9b49.png)  点击进入统计-协议分级  IPv6（Internet Protocol version">
+    <meta name="description" content="#Tool：Wireshark #你打出的每一个Poc在态势面前都是透明的  协议统计   点击进入统计-协议分级  IPv6（Internet Protocol version 6）（互联网协议第六版）IPv4（Internet Protocol version 6）（互联网协议第四版） Transmission Control Protocol (TCP)  User Datagram">
 <meta property="og:type" content="article">
 <meta property="og:title" content="流量分析从0到1">
 <meta property="og:url" content="http://example.com/2024/11/04/%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90%E4%BB%8E0%E5%88%B01/index.html">
 <meta property="og:site_name" content="Plazx">
-<meta property="og:description" content="#Tool：Wireshark #你打出的每一个Poc在态势面前都是透明的  协议统计 ![](https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2024&#x2F;png&#x2F;40918973&#x2F;1730728584776-05a09a01-3886-4ca0-b330-085b5f0c9b49.png)  点击进入统计-协议分级  IPv6（Internet Protocol version">
+<meta property="og:description" content="#Tool：Wireshark #你打出的每一个Poc在态势面前都是透明的  协议统计   点击进入统计-协议分级  IPv6（Internet Protocol version 6）（互联网协议第六版）IPv4（Internet Protocol version 6）（互联网协议第四版） Transmission Control Protocol (TCP)  User Datagram">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2024/png/40918973/1730728584776-05a09a01-3886-4ca0-b330-085b5f0c9b49.png">
 <meta property="og:image" content="https://cdn.nlark.com/yuque/0/2024/png/40918973/1730728722117-b1c5a2aa-4931-4ea4-8c38-989395c85455.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2024/png/40918973/1730730171136-3e46c336-732d-47d1-8421-4a73526975ba.png">
 <meta property="og:image" content="https://cdn.nlark.com/yuque/0/2024/png/40918973/1730730745788-73c83939-6ac8-4bdd-b11e-cd545a6fb62b.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2024/png/40918973/1730731793654-431f3364-25bc-4aa3-a610-0007e4c513f5.png">
 <meta property="og:image" content="https://cdn.nlark.com/yuque/0/2024/png/40918973/1730734928538-d8d0ca2a-8bfa-4f50-9025-64cd5084964d.png">
-<meta property="article:published_time" content="2024-11-03T16:15:00.000Z">
-<meta property="article:modified_time" content="2024-11-04T15:50:58.584Z">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2024/png/40918973/1730735089838-54c46551-234b-4c93-a1ea-34f21abbe795.png">
+<meta property="article:published_time" content="2024-11-04T12:00:00.000Z">
+<meta property="article:modified_time" content="2024-11-05T02:54:55.937Z">
 <meta property="article:author" content="Plazx">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://cdn.nlark.com/yuque/0/2024/png/40918973/1730728722117-b1c5a2aa-4931-4ea4-8c38-989395c85455.png">
+<meta name="twitter:image" content="https://cdn.nlark.com/yuque/0/2024/png/40918973/1730728584776-05a09a01-3886-4ca0-b330-085b5f0c9b49.png">
     
     
       
@@ -143,7 +147,7 @@
       
     <div class="postdate">
       
-        <time datetime="2024-11-03T16:15:00.000Z" class="dt-published" itemprop="datePublished">2024-11-04</time>
+        <time datetime="2024-11-04T12:00:00.000Z" class="dt-published" itemprop="datePublished">2024-11-04</time>
         
       
     </div>
@@ -160,38 +164,39 @@
   <div class="content e-content" itemprop="articleBody">
     <meta name="referrer" content="no-referrer" />
 
+
 <blockquote>
 <p>#Tool：Wireshark</p>
 <p>#你打出的每一个Poc在态势面前都是透明的</p>
 </blockquote>
 <h1 id="jMYye">协议统计</h1>
-![](https://cdn.nlark.com/yuque/0/2024/png/40918973/1730728584776-05a09a01-3886-4ca0-b330-085b5f0c9b49.png)
 
+<p><img src="https://cdn.nlark.com/yuque/0/2024/png/40918973/1730728584776-05a09a01-3886-4ca0-b330-085b5f0c9b49.png"></p>
 <p>点击进入<code>统计-协议分级</code></p>
 <p><img src="https://cdn.nlark.com/yuque/0/2024/png/40918973/1730728722117-b1c5a2aa-4931-4ea4-8c38-989395c85455.png"></p>
-<p><font style="color:rgb(6, 6, 7);">IPv6（Internet Protocol version 6）（互联网协议第六版）IPv4（Internet Protocol version 6）（互联网协议第四版）</font></p>
-<p><font style="color:rgb(6, 6, 7);">Transmission Control Protocol (TCP)  User Datagram Protocol (UDP)</font></p>
-<p><font style="color:rgb(6, 6, 7);">Hypertext Transfer Protocol (HTTP)：超文本传输协议</font></p>
-<p><font style="color:rgb(6, 6, 7);">得到Flag：</font><code>&lt;font style=&quot;color:rgb(6, 6, 7);&quot;&gt;NSSCTF&#123;http&#125;&lt;/font&gt;</code></p>
-<h1 id="bhZJQ">[陇剑杯 2021]jwt（问1）<font style="background-color:rgb(29, 30, 31);"></font></h1>
-![](https://cdn.nlark.com/yuque/0/2024/png/40918973/1730730171136-3e46c336-732d-47d1-8421-4a73526975ba.png)
+<p>IPv6（Internet Protocol version 6）（互联网协议第六版）IPv4（Internet Protocol version 6）（互联网协议第四版）</p>
+<p>Transmission Control Protocol (TCP)  User Datagram Protocol (UDP)</p>
+<p>Hypertext Transfer Protocol (HTTP)：超文本传输协议</p>
+<p>得到Flag：<code>NSSCTF&#123;http&#125;</code></p>
+<h1 id="bhZJQ">[陇剑杯 2021]jwt（问1）</h1>
 
-<p> 进入选择 <font style="color:rgb(6, 6, 7);">“Protocol”（协议），任意选择一个http数据包，右键追踪流，追踪http数据流</font></p>
-<p><font style="color:rgb(6, 6, 7);">下方过滤cookie</font></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2024/png/40918973/1730730171136-3e46c336-732d-47d1-8421-4a73526975ba.png"></p>
+<p> 进入选择 “Protocol”（协议），任意选择一个http数据包，右键追踪流，追踪http数据流</p>
+<p>下方过滤cookie</p>
 <p><img src="https://cdn.nlark.com/yuque/0/2024/png/40918973/1730730745788-73c83939-6ac8-4bdd-b11e-cd545a6fb62b.png"></p>
-<p>明显是jwt <font style="color:rgb(6, 6, 7);">得到Flag：</font><code>&lt;font style=&quot;color:rgb(6, 6, 7);&quot;&gt;NSSCTF&#123;jwt&#125;&lt;/font&gt;</code></p>
-<p><font style="color:rgb(6, 6, 7);">注意到 </font>PHP Session并非是鉴权，是系统随机分配的<font style="color:rgb(51, 51, 51);">会话</font></p>
-<h1 id="wvkP7"><font style="color:rgb(51, 51, 51);">[陇剑杯 2021]jwt（问2）</font></h1>
-![](https://cdn.nlark.com/yuque/0/2024/png/40918973/1730731793654-431f3364-25bc-4aa3-a610-0007e4c513f5.png)
+<p>明显是jwt 得到Flag：<code>NSSCTF&#123;jwt&#125;</code></p>
+<p>注意到 PHP Session并非是鉴权，是系统随机分配的会话</p>
+<h1 id="wvkP7">[陇剑杯 2021]jwt（问2）</h1>
 
+<p><img src="https://cdn.nlark.com/yuque/0/2024/png/40918973/1730731793654-431f3364-25bc-4aa3-a610-0007e4c513f5.png"></p>
 <p>#搞半天发现是自己附件下错了</p>
 <p>过滤http流，找到post &#x2F;exec 发现是成功执行指令whoami</p>
 <p><img src="https://cdn.nlark.com/yuque/0/2024/png/40918973/1730734928538-d8d0ca2a-8bfa-4f50-9025-64cd5084964d.png"></p>
-<p>jwt <font style="color:rgb(6, 6, 7);">得到Flag：</font><code>&lt;font style=&quot;color:rgb(6, 6, 7);&quot;&gt;NSSCTF&#123;10087#admin&#125;&lt;/font&gt;</code></p>
-<h1 id="GPKUX"><font style="color:rgb(51, 51, 51);">[陇剑杯 2021]jwt（问3）</font></h1>
-![](https://cdn.nlark.com/yuque/0/2024/png/40918973/1730735089838-54c46551-234b-4c93-a1ea-34f21abbe795.png)
+<p>jwt 得到Flag：<code>NSSCTF&#123;10087#admin&#125;</code></p>
+<h1 id="GPKUX">[陇剑杯 2021]jwt（问3）</h1>
 
-<p>从上文得出，显然<code>&lt;font style=&quot;color:rgb(6, 6, 7);&quot;&gt;NSSCTF&#123;root&#125;&lt;/font&gt;</code></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2024/png/40918973/1730735089838-54c46551-234b-4c93-a1ea-34f21abbe795.png"></p>
+<p>从上文得出，显然<code>NSSCTF&#123;root&#125;</code></p>
 
   </div>
 </article>
