@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="1z_php 12345678910111213141516&lt;?phphighlight_file(&#x27;index.php&#x27;);#一句话木马，神神又奇奇if(isset($_POST[&#x27;J&#x27;]))&#123;    $call&#x3D;$_POST[&#x27;J&#x27;];    $dangerous_commands &#x3D; [&#x27;cat">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ISCTF-2024-自由复现">
+<meta property="og:url" content="http://example.com/2024/11/20/ISCTF-2024-%E8%87%AA%E7%94%B1%E5%A4%8D%E7%8E%B0/index.html">
+<meta property="og:site_name" content="Plazx">
+<meta property="og:description" content="1z_php 12345678910111213141516&lt;?phphighlight_file(&#x27;index.php&#x27;);#一句话木马，神神又奇奇if(isset($_POST[&#x27;J&#x27;]))&#123;    $call&#x3D;$_POST[&#x27;J&#x27;];    $dangerous_commands &#x3D; [&#x27;cat">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2024/png/40918973/1732009824379-e98a4b82-1d8c-4eb0-a70d-0a2436c7a292.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2024/png/40918973/1732032472613-12f3b2f4-d6c0-408b-8015-874a7d676593.png">
+<meta property="article:published_time" content="2024-11-19T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-11-20T03:34:05.338Z">
+<meta property="article:author" content="Plazx">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.nlark.com/yuque/0/2024/png/40918973/1732009824379-e98a4b82-1d8c-4eb0-a70d-0a2436c7a292.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>ISCTF-2024-自由复现</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/NekoSec">Projects</a></li><!--
+     --><!--
+       --><li><a href="/links/">Friend Links</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/2024/11/12/Xss%E4%BB%8E0%E5%88%B01&&Xss-labs%5B1-20%5D/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2024/11/20/ISCTF-2024-%E8%87%AA%E7%94%B1%E5%A4%8D%E7%8E%B0/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2024/11/20/ISCTF-2024-%E8%87%AA%E7%94%B1%E5%A4%8D%E7%8E%B0/&text=ISCTF-2024-自由复现"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2024/11/20/ISCTF-2024-%E8%87%AA%E7%94%B1%E5%A4%8D%E7%8E%B0/&title=ISCTF-2024-自由复现"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2024/11/20/ISCTF-2024-%E8%87%AA%E7%94%B1%E5%A4%8D%E7%8E%B0/&is_video=false&description=ISCTF-2024-自由复现"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=ISCTF-2024-自由复现&body=Check out this article: http://example.com/2024/11/20/ISCTF-2024-%E8%87%AA%E7%94%B1%E5%A4%8D%E7%8E%B0/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2024/11/20/ISCTF-2024-%E8%87%AA%E7%94%B1%E5%A4%8D%E7%8E%B0/&title=ISCTF-2024-自由复现"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2024/11/20/ISCTF-2024-%E8%87%AA%E7%94%B1%E5%A4%8D%E7%8E%B0/&title=ISCTF-2024-自由复现"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2024/11/20/ISCTF-2024-%E8%87%AA%E7%94%B1%E5%A4%8D%E7%8E%B0/&title=ISCTF-2024-自由复现"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2024/11/20/ISCTF-2024-%E8%87%AA%E7%94%B1%E5%A4%8D%E7%8E%B0/&title=ISCTF-2024-自由复现"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2024/11/20/ISCTF-2024-%E8%87%AA%E7%94%B1%E5%A4%8D%E7%8E%B0/&name=ISCTF-2024-自由复现&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2024/11/20/ISCTF-2024-%E8%87%AA%E7%94%B1%E5%A4%8D%E7%8E%B0/&t=ISCTF-2024-自由复现"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#oVp47"><span class="toc-number">1.</span> <span class="toc-text">1z_php</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#GsJwD"><span class="toc-number">2.</span> <span class="toc-text">UP!UPloader 文件上传与包含</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#vAkuH"><span class="toc-number">3.</span> <span class="toc-text">小蓝鲨的秘密</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#or842"><span class="toc-number">4.</span> <span class="toc-text">小蓝鲨的故事</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#xzxBO"><span class="toc-number">5.</span> <span class="toc-text">ezserialize</span></a></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        ISCTF-2024-自由复现
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">Plazx</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2024-11-19T16:00:00.000Z" class="dt-published" itemprop="datePublished">2024-11-20</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <meta name="referrer" content="no-referrer" />
+
+
+
+
+
+<h1 id="oVp47">1z_php</h1>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">highlight_file(<span class="string">&#x27;index.php&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">#一句话木马，神神又奇奇</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(isset($_POST[<span class="string">&#x27;J&#x27;</span>]))&#123;</span><br><span class="line">    $call=$_POST[<span class="string">&#x27;J&#x27;</span>];</span><br><span class="line">    $dangerous_commands = [<span class="string">&#x27;cat&#x27;</span>, <span class="string">&#x27;tac&#x27;</span>, <span class="string">&#x27;head&#x27;</span>, <span class="string">&#x27;nl&#x27;</span>, <span class="string">&#x27;more&#x27;</span>, <span class="string">&#x27;less&#x27;</span>, <span class="string">&#x27;tail&#x27;</span>, <span class="string">&#x27;vi&#x27;</span>, <span class="string">&#x27;sed&#x27;</span>, <span class="string">&#x27;od&#x27;</span>];</span><br><span class="line">    foreach ($dangerous_commands <span class="keyword">as</span> $command) &#123;</span><br><span class="line">        <span class="keyword">if</span> (preg_match(<span class="string">&quot;/$command/i&quot;</span>, $call)) &#123;</span><br><span class="line">            die(<span class="string">&quot;这些个危险函数可不兴使啊&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    system($call);</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;cat&#x27;</span>, <span class="string">&#x27;tac&#x27;</span>, <span class="string">&#x27;head&#x27;</span>, <span class="string">&#x27;nl&#x27;</span>, <span class="string">&#x27;more&#x27;</span>, <span class="string">&#x27;less&#x27;</span>, <span class="string">&#x27;tail&#x27;</span>, <span class="string">&#x27;vi&#x27;</span>, <span class="string">&#x27;sed&#x27;</span>, <span class="string">&#x27;od&#x27;</span></span><br><span class="line"></span><br><span class="line">cat 查看，不仅仅是产看</span><br><span class="line">tac 倒序输出，从第一行第二行第三行到第三行第二行第一行</span><br><span class="line">head 查看前几行，默认是前<span class="number">10</span>行</span><br><span class="line">tail 查看末尾几行，默认是前<span class="number">10</span>行</span><br><span class="line">nl(number line) 输出每一行，并为每一行前面加上这一行的行号</span><br><span class="line">more less 逐页查看，每次只查看一页</span><br><span class="line">vi vim sed 都是文本编辑器</span><br><span class="line">od -x  十六进制输出 od -c ASCII码输出 od 八进制输出</span><br><span class="line"></span><br><span class="line">好了讲了一堆被过滤的。。</span><br></pre></td></tr></table></figure>
+
+<p>下面介绍绕过方法</p>
+<ol>
+<li><code>c&#39;&#39;at /f14g</code>  <code>&#39;&#39;</code>在bash中会被解释为空字符串，当flag被禁时也可以用</li>
+<li><code>ca/t /f14g</code></li>
+<li><code>grep &#123; /f14g</code> <code>grep</code>是用来查找字符串的，在这里我们查找<code>&#123;</code>他会输出含有<code>&#123;</code>的那一行</li>
+<li><code>strings /f14g</code> <code>strings</code>会提取文件中的可打印字符</li>
+<li><code>cp /f14g /var/www/html/index.php</code> 将&#x2F;f14g的内容拷贝到<code>index.php</code>，<code>index.php</code>的内容会被覆盖</li>
+</ol>
+<h1 id="GsJwD">UP!UPloader 文件上传与包含</h1>
+首先介绍一下文件包含漏洞
+
+<p><img src="https://cdn.nlark.com/yuque/0/2024/png/40918973/1732009824379-e98a4b82-1d8c-4eb0-a70d-0a2436c7a292.png" alt="关键的配置"><br> 远程文件包含漏洞与php:&#x2F;&#x2F;input的利用条件较为苛刻，要求allow_ur_include打开，但是在默认状态下这是关闭的 </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$file =$_GET[<span class="string">&#x27;file&#x27;</span>];</span><br><span class="line">include($file);</span><br><span class="line">?&gt;</span><br><span class="line"></span><br><span class="line">include()</span><br><span class="line">include_once()</span><br><span class="line">require()</span><br><span class="line">require_once()</span><br><span class="line"></span><br><span class="line">include()和require()的区别：</span><br><span class="line">require()如果在包含过程中出错，就会直接退出，不执行后续语句</span><br><span class="line">require()如果在包含过程中出错，只会提出警告，但不影响后续语句的执行</span><br></pre></td></tr></table></figure>
+
+<p>读取文件的内容采用php伪协议</p>
+<p><code>file=php://filter/read=convert.base64-encode/resource=xxx.php</code></p>
+<p>这里的<code>xxx.php</code>可以为相对路径，也可为绝对路径</p>
+<hr>
+<p>在这道题目中，我们任意上传有一个文件，会提示</p>
+<blockquote>
+<p><font style="color:rgb(0, 0, 0);">文件上传成功！不过文件路径可不好找呀~什么？什么include.php？我不知道啊。</font></p>
+</blockquote>
+<p>进入<code>include.php</code><font style="color:rgb(0, 0, 0);">尝试包含</font><code>upload.php</code>:<code>php://filter/read=convert.base64-encode/resource=upload.php</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">error_reporting(<span class="number">0</span>);</span><br><span class="line">$file = $_FILES[<span class="string">&#x27;file&#x27;</span>];</span><br><span class="line"><span class="keyword">if</span> (isset($file) &amp;&amp; $file[<span class="string">&#x27;size&#x27;</span>] &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    $ext = pathinfo($file[<span class="string">&#x27;name&#x27;</span>], PATHINFO_EXTENSION);</span><br><span class="line">    $name = pathinfo($file[<span class="string">&#x27;name&#x27;</span>], PATHINFO_FILENAME);</span><br><span class="line">    $dir_name = $name . <span class="string">&#x27;.&#x27;</span> . $ext;</span><br><span class="line">    $upload_dir = <span class="string">&#x27;./uploads/&#x27;</span>;  //当前路径的文件夹</span><br><span class="line">    <span class="keyword">if</span> (!is_dir($upload_dir)) &#123;</span><br><span class="line">        mkdir($upload_dir, 0755, true);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (move_uploaded_file($file[<span class="string">&#x27;tmp_name&#x27;</span>], $upload_dir . md5($dir_name) . <span class="string">&#x27;.&#x27;</span> . $ext)) &#123;</span><br><span class="line">        echo <span class="string">&quot;文件上传成功！不过文件路径可不好找呀~什么？什么include.php？我不知道啊。&quot;</span> ;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        echo <span class="string">&quot;文件存储失败，未知原因......&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    die();</span><br><span class="line">&#125;</span><br><span class="line">?&gt;uploads/</span><br><span class="line">会将文件名进行md5加密重命名放到当前路径的/uploads/文件夹中，</span><br></pre></td></tr></table></figure>
+
+<p>会将文件名进行md5加密重命名放到当前路径的&#x2F;uploads&#x2F;（.&#x2F;表示当前路径）文件夹中，即可得解</p>
+<h1 id="vAkuH">小蓝鲨的秘密</h1>
+访问发现跳转`https://www.bluesharkinfo.com/`可能为302跳转，Location即为跳转的地址，但是不知道为什么bp抓不到一开始的包，但是可以现在浏览器打开network页面，再访问网站，监控流量，再或者我们使用curl访问，或者是python的requests库脚本
+
+<p><img src="https://cdn.nlark.com/yuque/0/2024/png/40918973/1732032472613-12f3b2f4-d6c0-408b-8015-874a7d676593.png"></p>
+<h1 id="or842">小蓝鲨的故事</h1>
+python flask 客户端session伪造，不再赘述，可看p牛博客
+
+<p><a target="_blank" rel="noopener" href="https://www.leavesongs.com/PENETRATION/client-session-security.html">https://www.leavesongs.com/PENETRATION/client-session-security.html</a></p>
+<h1 id="xzxBO">ezserialize</h1>
+php反序列化，很久没有手搓过链子了，康复训练一下
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">error_reporting(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Flag</span> &#123;</span><br><span class="line">    private $flag;</span><br><span class="line"></span><br><span class="line">    public function __construct() &#123;</span><br><span class="line">        $this-&gt;flag = file_get_contents(<span class="string">&#x27;/flag&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public function getFlag() &#123;</span><br><span class="line">        <span class="keyword">return</span> $this-&gt;flag;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public function __toString() &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;You can&#x27;t directly access the flag!&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">User</span> &#123;</span><br><span class="line">    public $username;</span><br><span class="line">    public $isAdmin = false;</span><br><span class="line"></span><br><span class="line">    public function __construct($username) &#123;</span><br><span class="line">        $this-&gt;username = $username;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public function __wakeup() &#123;</span><br><span class="line">        <span class="keyword">if</span> ($this-&gt;isAdmin) &#123;</span><br><span class="line">            echo <span class="string">&quot;Welcome, admin! Here&#x27;s your flag: &quot;</span> . (new Flag())-&gt;getFlag();</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            echo <span class="string">&quot;Hello, &quot;</span> . htmlspecialchars($this-&gt;username) . <span class="string">&quot;!&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (isset($_GET[<span class="string">&#x27;data&#x27;</span>])) &#123;</span><br><span class="line">    $data = $_GET[<span class="string">&#x27;data&#x27;</span>];</span><br><span class="line"></span><br><span class="line">    $<span class="built_in">object</span> = unserialize($data);</span><br><span class="line">    <span class="keyword">if</span> ($<span class="built_in">object</span> instanceof User) &#123;</span><br><span class="line">        echo $<span class="built_in">object</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        echo <span class="string">&quot;Invalid object!&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    highlight_file(__FILE__);</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">Home</a></li>
+        
+          <li><a href="/about/">About</a></li>
+        
+          <li><a href="/archives/">Writing</a></li>
+        
+          <li><a target="_blank" rel="noopener" href="http://github.com/NekoSec">Projects</a></li>
+        
+          <li><a href="/links/">Friend Links</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#oVp47"><span class="toc-number">1.</span> <span class="toc-text">1z_php</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#GsJwD"><span class="toc-number">2.</span> <span class="toc-text">UP!UPloader 文件上传与包含</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#vAkuH"><span class="toc-number">3.</span> <span class="toc-text">小蓝鲨的秘密</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#or842"><span class="toc-number">4.</span> <span class="toc-text">小蓝鲨的故事</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#xzxBO"><span class="toc-number">5.</span> <span class="toc-text">ezserialize</span></a></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2024/11/20/ISCTF-2024-%E8%87%AA%E7%94%B1%E5%A4%8D%E7%8E%B0/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2024/11/20/ISCTF-2024-%E8%87%AA%E7%94%B1%E5%A4%8D%E7%8E%B0/&text=ISCTF-2024-自由复现"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2024/11/20/ISCTF-2024-%E8%87%AA%E7%94%B1%E5%A4%8D%E7%8E%B0/&title=ISCTF-2024-自由复现"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2024/11/20/ISCTF-2024-%E8%87%AA%E7%94%B1%E5%A4%8D%E7%8E%B0/&is_video=false&description=ISCTF-2024-自由复现"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=ISCTF-2024-自由复现&body=Check out this article: http://example.com/2024/11/20/ISCTF-2024-%E8%87%AA%E7%94%B1%E5%A4%8D%E7%8E%B0/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2024/11/20/ISCTF-2024-%E8%87%AA%E7%94%B1%E5%A4%8D%E7%8E%B0/&title=ISCTF-2024-自由复现"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2024/11/20/ISCTF-2024-%E8%87%AA%E7%94%B1%E5%A4%8D%E7%8E%B0/&title=ISCTF-2024-自由复现"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2024/11/20/ISCTF-2024-%E8%87%AA%E7%94%B1%E5%A4%8D%E7%8E%B0/&title=ISCTF-2024-自由复现"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2024/11/20/ISCTF-2024-%E8%87%AA%E7%94%B1%E5%A4%8D%E7%8E%B0/&title=ISCTF-2024-自由复现"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2024/11/20/ISCTF-2024-%E8%87%AA%E7%94%B1%E5%A4%8D%E7%8E%B0/&name=ISCTF-2024-自由复现&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2024/11/20/ISCTF-2024-%E8%87%AA%E7%94%B1%E5%A4%8D%E7%8E%B0/&t=ISCTF-2024-自由复现"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2024-2077
+    Plazx
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/NekoSec">Projects</a></li><!--
+     --><!--
+       --><li><a href="/links/">Friend Links</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+  <script type="text/javascript">
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?4d0e9f82e790a82153825a1c24f344dc";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+        </script>
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>
