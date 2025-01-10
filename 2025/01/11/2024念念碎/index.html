@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="今年在安全方向上收获了很多，从一开始的懵懵懂懂，到现在的对安全有了一个整体的把握                      暑假的时候挖了一会SRC，也是冲到了水滴的年榜top10，对于SRC我最近的思考是你的攻击面越广，杀害链越长，越能产出高质量漏洞，可能到寒假会再挖一挖把   学会了打CTF，进了实验室，我其实对CTF没什么太大的兴趣，主要还是想拿奖证明自己，12月和同学还有学长去">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2024念念碎">
+<meta property="og:url" content="http://example.com/2025/01/11/2024%E5%BF%B5%E5%BF%B5%E7%A2%8E/index.html">
+<meta property="og:site_name" content="Plazx&#39;s Blog">
+<meta property="og:description" content="今年在安全方向上收获了很多，从一开始的懵懵懂懂，到现在的对安全有了一个整体的把握                      暑假的时候挖了一会SRC，也是冲到了水滴的年榜top10，对于SRC我最近的思考是你的攻击面越广，杀害链越长，越能产出高质量漏洞，可能到寒假会再挖一挖把   学会了打CTF，进了实验室，我其实对CTF没什么太大的兴趣，主要还是想拿奖证明自己，12月和同学还有学长去">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2025/png/40918973/1736515049687-ccbe7012-522c-4087-bb13-ff7751a225d2.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2025/png/40918973/1736259709908-21b21094-c709-4e46-a91f-4835ac69be98.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2025/png/40918973/1736259731872-c2063386-87b9-4f9b-aec4-47c3958c0906.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2025/png/40918973/1736514756321-98e97d0f-79aa-46ea-8420-6598ac306d1f.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2025/png/40918973/1736260735112-7aa3246a-8fd5-42cb-bc40-c9ae1df52d6a.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2025/png/40918973/1736261834186-762ea9a4-83d6-4d2e-ab61-ea6be0fb761c.png">
+<meta property="article:published_time" content="2025-01-10T16:00:00.000Z">
+<meta property="article:modified_time" content="2025-01-10T16:39:47.534Z">
+<meta property="article:author" content="Plazx">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.nlark.com/yuque/0/2025/png/40918973/1736515049687-ccbe7012-522c-4087-bb13-ff7751a225d2.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>2024念念碎</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/NekoSec">Projects</a></li><!--
+     --><!--
+       --><li><a href="/links/">Friend Links</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/2024/12/23/%E7%89%A9%E7%90%86%E9%A2%86%E5%9F%9F%E6%88%90%E5%B0%B1%E6%96%87%E7%AB%A0/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2025/01/11/2024%E5%BF%B5%E5%BF%B5%E7%A2%8E/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2025/01/11/2024%E5%BF%B5%E5%BF%B5%E7%A2%8E/&text=2024念念碎"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2025/01/11/2024%E5%BF%B5%E5%BF%B5%E7%A2%8E/&title=2024念念碎"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2025/01/11/2024%E5%BF%B5%E5%BF%B5%E7%A2%8E/&is_video=false&description=2024念念碎"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=2024念念碎&body=Check out this article: http://example.com/2025/01/11/2024%E5%BF%B5%E5%BF%B5%E7%A2%8E/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2025/01/11/2024%E5%BF%B5%E5%BF%B5%E7%A2%8E/&title=2024念念碎"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2025/01/11/2024%E5%BF%B5%E5%BF%B5%E7%A2%8E/&title=2024念念碎"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2025/01/11/2024%E5%BF%B5%E5%BF%B5%E7%A2%8E/&title=2024念念碎"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2025/01/11/2024%E5%BF%B5%E5%BF%B5%E7%A2%8E/&title=2024念念碎"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2025/01/11/2024%E5%BF%B5%E5%BF%B5%E7%A2%8E/&name=2024念念碎&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2025/01/11/2024%E5%BF%B5%E5%BF%B5%E7%A2%8E/&t=2024念念碎"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#BJ28Z"><span class="toc-number">1.</span> <span class="toc-text">2025展望</span></a></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        2024念念碎
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">Plazx</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2025-01-10T16:00:00.000Z" class="dt-published" itemprop="datePublished">2025-01-11</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <meta name="referrer" content="no-referrer" />
+
+
+
+
+
+<p>今年在安全方向上收获了很多，从一开始的懵懵懂懂，到现在的对安全有了一个整体的把握                     </p>
+<p>暑假的时候挖了一会SRC，也是冲到了水滴的年榜top10，对于SRC我最近的思考是你的攻击面越广，杀害链越长，越能产出高质量漏洞，可能到寒假会再挖一挖把</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/40918973/1736515049687-ccbe7012-522c-4087-bb13-ff7751a225d2.png"></p>
+<hr>
+<p>学会了打CTF，进了实验室，我其实对CTF没什么太大的兴趣，主要还是想拿奖证明自己，12月和同学还有学长去郑州打了第一场线下赛，很开心😄</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/40918973/1736259709908-21b21094-c709-4e46-a91f-4835ac69be98.png"><img src="https://cdn.nlark.com/yuque/0/2025/png/40918973/1736259731872-c2063386-87b9-4f9b-aec4-47c3958c0906.png"></p>
+<hr>
+<p>9月末10月初印象很深的是在网上闲逛的时候发现了一个目标，随手测出来一个洞，接下来死活进不去，无奈发给朋友，结果一个多小时后人开始搭建内网代理了，诶，人和人的差距真的太大了，越学感觉自己越笨，在安全这块的天赋基本没有，只能一个人慢慢的走。</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/40918973/1736514756321-98e97d0f-79aa-46ea-8420-6598ac306d1f.png"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/40918973/1736260735112-7aa3246a-8fd5-42cb-bc40-c9ae1df52d6a.png"></p>
+<p>（附上四哥的一段话）</p>
+<hr>
+<p>认识一个了一个360研究院的好朋友，玩的很好嘻嘻嘻，说到这，今年真是认识了好多厉害的师傅，为什么就我是最菜的😭😭😭</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/40918973/1736261834186-762ea9a4-83d6-4d2e-ab61-ea6be0fb761c.png"></p>
+<hr>
+<h1 id="BJ28Z">2025展望</h1>
+> 技术上持续精进，做难且正确的事
+>
+
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">Home</a></li>
+        
+          <li><a href="/about/">About</a></li>
+        
+          <li><a href="/archives/">Writing</a></li>
+        
+          <li><a target="_blank" rel="noopener" href="http://github.com/NekoSec">Projects</a></li>
+        
+          <li><a href="/links/">Friend Links</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#BJ28Z"><span class="toc-number">1.</span> <span class="toc-text">2025展望</span></a></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2025/01/11/2024%E5%BF%B5%E5%BF%B5%E7%A2%8E/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2025/01/11/2024%E5%BF%B5%E5%BF%B5%E7%A2%8E/&text=2024念念碎"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2025/01/11/2024%E5%BF%B5%E5%BF%B5%E7%A2%8E/&title=2024念念碎"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2025/01/11/2024%E5%BF%B5%E5%BF%B5%E7%A2%8E/&is_video=false&description=2024念念碎"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=2024念念碎&body=Check out this article: http://example.com/2025/01/11/2024%E5%BF%B5%E5%BF%B5%E7%A2%8E/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2025/01/11/2024%E5%BF%B5%E5%BF%B5%E7%A2%8E/&title=2024念念碎"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2025/01/11/2024%E5%BF%B5%E5%BF%B5%E7%A2%8E/&title=2024念念碎"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2025/01/11/2024%E5%BF%B5%E5%BF%B5%E7%A2%8E/&title=2024念念碎"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2025/01/11/2024%E5%BF%B5%E5%BF%B5%E7%A2%8E/&title=2024念念碎"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2025/01/11/2024%E5%BF%B5%E5%BF%B5%E7%A2%8E/&name=2024念念碎&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2025/01/11/2024%E5%BF%B5%E5%BF%B5%E7%A2%8E/&t=2024念念碎"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2024-2077
+    Plazx
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/NekoSec">Projects</a></li><!--
+     --><!--
+       --><li><a href="/links/">Friend Links</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+  <script type="text/javascript">
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?4d0e9f82e790a82153825a1c24f344dc";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+        </script>
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>
